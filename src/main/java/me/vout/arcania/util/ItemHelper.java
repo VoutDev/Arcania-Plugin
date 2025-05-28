@@ -2,13 +2,19 @@ package me.vout.arcania.util;
 
 import me.vout.arcania.Arcania;
 import me.vout.arcania.gui.PersistentDataEnum;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitTask;
 
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -133,5 +139,27 @@ public class ItemHelper {
             case 10 -> "X";
             default -> "I";
         };
+    }
+
+    public static FurnaceRecipe getFurnaceRecipeForItemStack(ItemStack item) {
+        Optional<FurnaceRecipe> furnaceRecipe = Bukkit.getRecipesFor(item)
+            .stream()
+            .filter(possibleRecipe -> {
+                if (!(possibleRecipe instanceof FurnaceRecipe)) {
+                    return false;
+                }
+                if (((FurnaceRecipe)possibleRecipe).getInput().getType() != item.getType()) {
+                    return false;
+                }
+                return true;
+            })
+            .map(unmappedFurnaceRecipe -> (FurnaceRecipe) unmappedFurnaceRecipe)
+            .findFirst();
+        
+        if (furnaceRecipe.isPresent()) {
+            return furnaceRecipe.get();
+        }
+
+        return null;
     }
 }
