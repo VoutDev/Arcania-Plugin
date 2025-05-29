@@ -1,6 +1,8 @@
 package me.vout.arcania.enchant;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+
 import java.util.function.Predicate;
 
 public abstract class ArcaniaEnchant {
@@ -23,7 +25,11 @@ public abstract class ArcaniaEnchant {
         this.canApplyPredicate = canApplyPredicate;
     }
 
-    public boolean isCompatibleWith(ArcaniaEnchant other) {
+    public boolean isCompatibleWith(Enchantment enchantment) {
+        return true;
+    }
+
+    public boolean isCompatibleWith(ArcaniaEnchant arcaniaEnchant) {
         return true;
     }
 

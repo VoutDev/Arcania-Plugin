@@ -1,9 +1,48 @@
 package me.vout.arcania.enchant.pickaxe;
 
+import me.vout.arcania.Arcania;
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.EnchantRarityEnum;
+import me.vout.arcania.manager.ConfigManager;
 import me.vout.arcania.util.ItemHelper;
 
+import java.util.List;
+
+/**
+ * Enrichment Enchantment
+ * 
+ * A powerful enchantment that increases the experience dropped from mining blocks.
+ * 
+ * Technical Specifications:
+ * - Rarity: RARE
+ * - Max Level: 3
+ * - Success Rate: 70%
+ * - Cost: 15 levels
+ * - Applies to: Pickaxes only
+ * 
+ * Experience Scaling:
+ * The enchantment scales the base XP drop using the formula:
+ * scaledXP = baseXP * (1 + (level * 0.5))
+ * 
+ * Scaling by Level:
+ * - Level 1: 1.5x XP (50% increase)
+ * - Level 2: 2.0x XP (100% increase)
+ * - Level 3: 2.5x XP (150% increase)
+ * 
+ * Functionality:
+ * - Applies to all sources of mining XP:
+ *   - Ore blocks
+ *   - Spawner breaks
+ *   - Smelting XP (when combined with Smelt enchant)
+ * - Rounds up to nearest whole XP point
+ * - Applies after all other XP modifications
+ * 
+ * Integration:
+ * - Compatible with all other mining enchantments
+ * - Works with the block breaking queue system
+ * - Stacks multiplicatively with other XP-modifying effects
+ * - Particularly effective when combined with the Smelt enchantment
+ */
 public class EnrichmentEnchant extends ArcaniaEnchant {
     public static final EnrichmentEnchant INSTANCE = new EnrichmentEnchant();
 
@@ -20,5 +59,19 @@ public class EnrichmentEnchant extends ArcaniaEnchant {
     @Override
     public boolean canApplyWith(ArcaniaEnchant enchant) {
         return true;
+    }
+
+
+    public static float getScaledXP(float baseXP, int level) {
+        ConfigManager configManager = Arcania.getConfigManager();
+        double k = configManager.getEssenceK();
+        List<Double> multipliers = configManager.getEssenceXpMultiplier();
+
+        if (baseXP <= 5) {
+            return (float) (baseXP * (1 + multipliers.get(level - 1)));
+        } else {
+            double bonus = baseXP * multipliers.get(level - 1) * (k / (baseXP + k));
+            return (float) (baseXP + bonus);
+        }
     }
 }

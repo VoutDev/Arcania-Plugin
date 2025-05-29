@@ -9,25 +9,30 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Level;
 
 public class BlockBreakQueue {
     private static final ConcurrentHashMap<Player, Queue<BlockBreakData>> playerQueues = new ConcurrentHashMap<>();
-    private static final int BATCH_SIZE = 5; // Number of blocks to process per tick
+    private static final HashMap<Player, Float> cummulativePlayerExperience = new HashMap<>();
+    private static final int BATCH_SIZE = 25; // Number of blocks to process per tick
     private static final long PROCESS_INTERVAL = 1L; // Process every tick
     private static boolean isProcessing = false;
 
     public static class BlockBreakData {
+        private final ItemStack tool;
         private final Block block;
         private final List<ItemStack> drops;
         private final float experience;
         private final Location dropLocation;
         private final boolean hasMagnet;
 
-        public BlockBreakData(Block block, List<ItemStack> drops, float experience, Location dropLocation, boolean hasMagnet) {
+        public BlockBreakData(ItemStack tool, Block block, List<ItemStack> drops, float experience, Location dropLocation, boolean hasMagnet) {
+            this.tool = tool;
             this.block = block;
             this.drops = drops;
             this.experience = experience;
@@ -103,9 +108,19 @@ public class BlockBreakQueue {
 
         // Spawn experience
         if (data.experience > 0) {
-            Location expLocation = data.dropLocation.clone().add(0.5, 0.5, 0.5);
-            data.block.getWorld().spawn(expLocation, ExperienceOrb.class)
-                .setExperience((int)data.experience);
+            cummulativePlayerExperience.put(player, cummulativePlayerExperience.getOrDefault(player, 0f) + data.experience);
+            float cummulativeExperience = cummulativePlayerExperience.get(player);
+            Arcania.getInstance().getLogger().log(Level.INFO, "cummulativeExperience: " + cummulativeExperience);
+            if (cummulativeExperience >= 1) {
+                Location expLocation = data.dropLocation.clone().add(0.5, 0.5, 0.5);
+                int experienceToGive = (int) Math.floor(cummulativeExperience); 
+                data.block.getWorld().spawn(expLocation, ExperienceOrb.class)
+                    .setExperience(experienceToGive);
+                cummulativePlayerExperience.put(player, cummulativeExperience - experienceToGive);
+            }
+            
         }
+
+        ToolHelper.damageTool(player, data.tool, 1);
     }
 } 

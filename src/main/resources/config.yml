@@ -3,6 +3,18 @@ utility:
   fix-enchant-check: false
 
 enchant:
+  enrichment:
+    xp-multiplier:
+      - 0.75
+      - 1.0
+      - 1.5
+    k: 10.0
+  essence:
+    xp-multiplier:
+      - 0.75
+      - 1.0
+      - 1.5
+    k: 10.0
   veinminer:
     max-blocks: 10
     whitelisted-blocks:

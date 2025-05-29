@@ -1,5 +1,7 @@
 package me.vout.arcania.enchant.tool;
 
+import org.bukkit.enchantments.Enchantment;
+
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.EnchantRarityEnum;
 import me.vout.arcania.util.ItemHelper;
@@ -19,5 +21,10 @@ public class SmeltEnchant extends ArcaniaEnchant {
     @Override
     public boolean canApplyWith(ArcaniaEnchant enchant) {
         return true;
+    }
+
+    @Override
+    public boolean isCompatibleWith(Enchantment enchantment) {
+        return enchantment != Enchantment.SILK_TOUCH;
     }
 }

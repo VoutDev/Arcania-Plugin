@@ -1,12 +1,15 @@
 package me.vout.arcania.enchant.weapon;
 
+import me.vout.arcania.Arcania;
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.EnchantRarityEnum;
 import me.vout.arcania.enchant.tool.MagnetEnchant;
+import me.vout.arcania.manager.ConfigManager;
 import me.vout.arcania.util.ItemHelper;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDeathEvent;
 
+import java.util.List;
 import java.util.Map;
 
 public class EssenceEnchant extends ArcaniaEnchant {
@@ -43,14 +46,15 @@ public class EssenceEnchant extends ArcaniaEnchant {
     }
 
     public static float getScaledXP(float baseXP, int level) {
-        double[] multipliers = {0.75, 1.0, 1.5};
-        double k = 10.0;
+        ConfigManager configManager = Arcania.getConfigManager();
+        double k = configManager.getEssenceK();
+        List<Double> multipliers = configManager.getEssenceXpMultiplier();
 
         if (baseXP <= 5) {
-            return (int) Math.round(baseXP * (1 + multipliers[level - 1]));
+            return (float) (baseXP * (1 + multipliers.get(level - 1)));
         } else {
-            double bonus = baseXP * multipliers[level - 1] * (k / (baseXP + k));
-            return baseXP + (int) Math.round(bonus);
+            double bonus = baseXP * multipliers.get(level - 1) * (k / (baseXP + k));
+            return (float) (baseXP + bonus);
         }
     }
 }

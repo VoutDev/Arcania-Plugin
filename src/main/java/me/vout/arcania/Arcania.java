@@ -9,7 +9,10 @@ import me.vout.arcania.manager.ConfigManager;
 import me.vout.arcania.manager.GuiManager;
 import me.vout.arcania.util.ItemHelper;
 
+import org.bukkit.Registry;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
@@ -72,7 +75,7 @@ public final class Arcania extends JavaPlugin {
         return enchantManager;
     }
     public static Arcania getInstance() {
-        return  instance;
+        return instance;
     }
     public static ConfigManager getConfigManager() {
         return configManager;
