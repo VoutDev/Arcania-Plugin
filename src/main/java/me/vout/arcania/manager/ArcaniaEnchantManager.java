@@ -7,6 +7,7 @@ import me.vout.arcania.enchant.pickaxe.EnrichmentEnchant;
 import me.vout.arcania.enchant.pickaxe.QuarryEnchant;
 import me.vout.arcania.enchant.pickaxe.VeinminerEnchant;
 import me.vout.arcania.enchant.tool.MagnetEnchant;
+import me.vout.arcania.enchant.tool.SmeltEnchant;
 import me.vout.arcania.enchant.weapon.EssenceEnchant;
 import me.vout.arcania.enchant.weapon.FrostbiteEnchant;
 
@@ -34,6 +35,7 @@ public class ArcaniaEnchantManager {
         enchants.add(VeinminerEnchant.INSTANCE);
         enchants.add(MagnetEnchant.INSTANCE);
         enchants.add(EssenceEnchant.INSTANCE);
+        enchants.add(SmeltEnchant.INSTANCE);
     }
 
     private void buildEnchantMap() {

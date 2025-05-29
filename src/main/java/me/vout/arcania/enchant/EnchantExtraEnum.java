@@ -3,6 +3,7 @@ package me.vout.arcania.enchant;
 public enum EnchantExtraEnum {
 
     TOOL_TIP("#F6F6F7"),
+    DESCRIPTION("#CCCCCC"),
     LEVEL_COST("#ACD0AE"),
     ERROR_MESSAGE("#F4564B");
 

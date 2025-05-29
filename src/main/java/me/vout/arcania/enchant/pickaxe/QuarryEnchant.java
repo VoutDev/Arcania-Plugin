@@ -3,15 +3,14 @@ package me.vout.arcania.enchant.pickaxe;
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.EnchantRarityEnum;
 import me.vout.arcania.util.ItemHelper;
-import me.vout.arcania.util.ToolHelper;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class QuarryEnchant extends ArcaniaEnchant {
 
@@ -30,28 +29,33 @@ public class QuarryEnchant extends ArcaniaEnchant {
     public boolean canApplyWith(ArcaniaEnchant enchant) {
         return true;
     }
-    public static void onProc(Player player, ItemStack item, BlockBreakEvent event, Map<ArcaniaEnchant, Integer> enchants) {
-        Block block = event.getBlock();
-        if (!block.isPreferredTool(item)) return;
 
-        int veinMinerLevel = enchants.getOrDefault(VeinminerEnchant.INSTANCE, 0);
+    public static List<Block> getBlocksToBreak(Player player, ItemStack item, BlockBreakEvent event, List<Block> blocksToAttemptToBreak) {
+        // get the block to break
+        Block block = event.getBlock();
+        // check if the block is preferred tool
+        if (!block.isPreferredTool(item)) {
+            return new ArrayList<>();
+        }
+        List<Block> blocksToBreak = new ArrayList<>();
+
         BlockFace face = getBlockFace(player);
         if (face == null)
             face = player.getFacing();
 
         int[][] offsets = getBlocksOffset(face);
         event.setCancelled(true);
+
         for (int[] offset : offsets) {
             Block relative = block.getRelative(offset[0], offset[1], offset[2]);
-            if (relative.isPreferredTool(item)) {
-                if (VeinminerEnchant.isVeinMineBlock(relative.getType()) && veinMinerLevel > 0) {
-                    VeinminerEnchant.veinMine(player, relative, enchants);
-                }
-                else {
-                    if (!ToolHelper.customBreakBlock(player, relative, item, enchants)) break;
-                }
-            }
+            
+            if (relative.isPreferredTool(item)) continue;
+            if (blocksToAttemptToBreak.contains(relative) || blocksToBreak.contains(relative)) continue;
+            
+            blocksToBreak.add(relative);
         }
+
+        return blocksToBreak;
     }
 
     private static BlockFace getBlockFace(Player player) {

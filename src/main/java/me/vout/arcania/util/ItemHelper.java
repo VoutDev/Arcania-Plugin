@@ -12,13 +12,35 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.scheduler.BukkitTask;
 
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
+
+
 public class ItemHelper {
+
+    public static Map<Material, FurnaceRecipe> furnaceRecipes = new HashMap<>();
+
+    public static void initFurnaceRecipes() {
+        Iterator<Recipe> recipeIterator = Bukkit.recipeIterator();
+        Arcania.getInstance().getLogger().log(Level.INFO, "initializing furnace recipes");
+        while (recipeIterator.hasNext()) {
+            Recipe recipe = recipeIterator.next();
+            if (recipe instanceof FurnaceRecipe furnaceRecipe) {
+                // Arcania.getInstance().getLogger().log(Level.INFO, "initFurnaceRecipes: " + furnaceRecipe.getInput().getType().name());
+                furnaceRecipes.put(furnaceRecipe.getInput().getType(), furnaceRecipe);
+            }
+        }
+        Arcania.getInstance().getLogger().log(Level.INFO, "number of furnace recipes: " + furnaceRecipes.size());
+    }
+    
     public static boolean isTool(Material mat) {
         String name = mat.name();
         return name.endsWith("_PICKAXE") ||
@@ -142,24 +164,7 @@ public class ItemHelper {
     }
 
     public static FurnaceRecipe getFurnaceRecipeForItemStack(ItemStack item) {
-        Optional<FurnaceRecipe> furnaceRecipe = Bukkit.getRecipesFor(item)
-            .stream()
-            .filter(possibleRecipe -> {
-                if (!(possibleRecipe instanceof FurnaceRecipe)) {
-                    return false;
-                }
-                if (((FurnaceRecipe)possibleRecipe).getInput().getType() != item.getType()) {
-                    return false;
-                }
-                return true;
-            })
-            .map(unmappedFurnaceRecipe -> (FurnaceRecipe) unmappedFurnaceRecipe)
-            .findFirst();
-        
-        if (furnaceRecipe.isPresent()) {
-            return furnaceRecipe.get();
-        }
-
-        return null;
+        FurnaceRecipe furnaceRecipe = furnaceRecipes.get(item.getType());
+        return furnaceRecipe;
     }
 }

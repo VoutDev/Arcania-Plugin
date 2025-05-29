@@ -31,18 +31,18 @@ public class EssenceEnchant extends ArcaniaEnchant {
         if (enchants.containsKey(EssenceEnchant.INSTANCE))
             essenceLevel = enchants.get(EssenceEnchant.INSTANCE);
 
-        int xp = event.getDroppedExp();
+        float xp = event.getDroppedExp();
         if (essenceLevel > 0)
             xp = getScaledXP(xp, essenceLevel);
 
         if (enchants.containsKey(MagnetEnchant.INSTANCE)) {
            MagnetEnchant.onProc(player, event, xp);
+        } else {
+            event.setDroppedExp((int)xp);
         }
-        else
-            event.setDroppedExp(xp);
     }
 
-    public static int getScaledXP(int baseXP, int level) {
+    public static float getScaledXP(float baseXP, int level) {
         double[] multipliers = {0.75, 1.0, 1.5};
         double k = 10.0;
 

@@ -1,15 +1,12 @@
 package me.vout.arcania.enchant.pickaxe;
 
+import me.vout.arcania.Arcania;
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.EnchantRarityEnum;
 import me.vout.arcania.util.ItemHelper;
-import me.vout.arcania.util.ToolHelper;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.inventory.ItemStack;
-
 import java.util.*;
 
 public class VeinminerEnchant extends ArcaniaEnchant {
@@ -29,40 +26,32 @@ public class VeinminerEnchant extends ArcaniaEnchant {
         return true;
     }
 
-    public static void onProc(Player player, BlockBreakEvent event, Map<ArcaniaEnchant, Integer> enchants) {
-        Block block = event.getBlock();
-
-        if (isVeinMineBlock(block.getType())) {
-            event.setCancelled(true);
-            veinMine(player, block, enchants);
-        }
-    }
-
     public static boolean isVeinMineBlock(Material mat) {
-        return mat.name().endsWith("_ORE") ||
-                mat == Material.GRANITE ||
-                mat == Material.DIORITE ||
-                mat == Material.ANDESITE ||
-                mat == Material.TUFF;
+        return Arcania.getConfigManager().getVeinminerWhitelistedBlocks().stream().anyMatch(pattern -> {
+            String regexPattern = pattern.replace("*", ".*");
+            return mat.name().matches(regexPattern);
+        });
     }
 
-    public static void veinMine(Player player, Block startBlock, Map<ArcaniaEnchant, Integer> enchants) {
-        int maxBlocks = 10 + enchants.get(VeinminerEnchant.INSTANCE) * 5;
+    public static List<Block> getBlocksToBreak(Player player, Block startBlock, Map<ArcaniaEnchant, Integer> enchants, List<Block> blocksToAttemptToBreak) {
+        int maxBlocksToVienMine = Arcania.getConfigManager().getVeinminerMaxBlocks() + enchants.get(VeinminerEnchant.INSTANCE) * 5;
         Material targetType = startBlock.getType();
         Set<Block> checked = new HashSet<>();
         Queue<Block> toCheck = new LinkedList<>();
-        List<Block> toBreak = new ArrayList<>();
+        List<Block> blocksToBreak = new ArrayList<>();
 
         toCheck.add(startBlock);
 
-        while (!toCheck.isEmpty() && toBreak.size() < maxBlocks) {
+        while (!toCheck.isEmpty() && blocksToBreak.size() < maxBlocksToVienMine) {
             Block block = toCheck.poll();
             if (checked.contains(block)) continue;
             checked.add(block);
 
             if (block.getType() != targetType) continue;
-
-            toBreak.add(block);
+            // make sure we don't add the block if it's already in the list of blocks to break or attempt to break
+            if (!blocksToBreak.contains(block) && !blocksToAttemptToBreak.contains(block)) {
+                blocksToBreak.add(block);
+            }            
 
             // Check all 26 neighbors in a 3x3x3 cube
             for (int dx = -1; dx <= 1; dx++) {
@@ -78,11 +67,6 @@ public class VeinminerEnchant extends ArcaniaEnchant {
             }
         }
 
-        // Break all found blocks as the player
-        ItemStack tool = player.getInventory().getItemInMainHand();
-        for (Block block : toBreak) {
-            if (!ToolHelper.customBreakBlock(player, block, tool, enchants))
-                break;
-        }
+        return blocksToBreak;
     }
 }

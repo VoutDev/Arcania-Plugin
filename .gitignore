@@ -1,0 +1,7 @@
+server
+target
+.project
+.classpath
+.settings
+.vscode
+build.sh

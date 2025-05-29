@@ -41,7 +41,7 @@ public class EnchanterMenuHandler {
                     player.setLevel(playersLevels - action.getRarity().getCost());
                     ArcaniaEnchant enchant = getEnchant(action.getRarity(), false);
                     int level = getLevel(enchant);
-                    InventoryHelper.giveOrDrop(player, EnchantHelper.getEnchantBook(enchant, level, false));
+                    InventoryHelper.giveOrDrop(player, EnchantHelper.getEnchantBook(enchant, level, true));
                     player.playSound(player.getLocation(), Sound.BLOCK_ENCHANTMENT_TABLE_USE, 0.5f, 1.0f);
                 } else {
                     ItemStack errorItem = new ItemStack(Material.RED_WOOL);

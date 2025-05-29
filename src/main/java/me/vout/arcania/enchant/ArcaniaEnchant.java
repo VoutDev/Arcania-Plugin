@@ -1,11 +1,6 @@
 package me.vout.arcania.enchant;
 
-import me.vout.arcania.Arcania;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
-
 import java.util.function.Predicate;
 
 public abstract class ArcaniaEnchant {

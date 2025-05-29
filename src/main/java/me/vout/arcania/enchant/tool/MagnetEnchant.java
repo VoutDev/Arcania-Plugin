@@ -26,11 +26,11 @@ public class MagnetEnchant extends ArcaniaEnchant {
         return true;
     }
 
-    public static void onProc(Player player, EntityDeathEvent event, int xp) {
+    public static void onProc(Player player, EntityDeathEvent event, float xp) {
         event.setDroppedExp(0);
 
         InventoryHelper.giveOrDrop(player, event.getDrops().toArray(new ItemStack[0]));
         event.getDrops().clear();
-        player.getWorld().spawn(player.getLocation(), ExperienceOrb.class).setExperience(xp);
+        player.getWorld().spawn(player.getLocation(), ExperienceOrb.class).setExperience((int)xp);
     }
 }

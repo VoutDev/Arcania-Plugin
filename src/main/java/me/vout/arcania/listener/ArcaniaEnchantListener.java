@@ -39,26 +39,10 @@ public class ArcaniaEnchantListener implements Listener {
         if (item.getType().isAir() ||  !ItemHelper.isBlockBreakTool(item.getType())) return;
 
         Map<ArcaniaEnchant, Integer> activeEnchants = EnchantHelper.getItemEnchants(item);
+
         if (activeEnchants.isEmpty()) return;
 
-        if (activeEnchants.containsKey(QuarryEnchant.INSTANCE) &&
-                event.getBlock().isPreferredTool(item)) {
-            QuarryEnchant.onProc(player, item, event, activeEnchants);
-        }
-        if (!event.isCancelled() &&
-                activeEnchants.containsKey(VeinminerEnchant.INSTANCE)) {
-            VeinminerEnchant.onProc(player, event, activeEnchants);
-        }
-
-        if (!event.isCancelled() &&
-        activeEnchants.containsKey(EnrichmentEnchant.INSTANCE)) {
-            EnrichmentEnchant.onProc(player, item, event, activeEnchants);
-        }
-
-        if (!event.isCancelled() &&
-                activeEnchants.containsKey(MagnetEnchant.INSTANCE)) {
-            ToolHelper.customBreakBlock(player, event.getBlock(), item, activeEnchants);
-        }
+        ToolHelper.customBreakBlock(player, event, item, activeEnchants);
     }
 
     @EventHandler

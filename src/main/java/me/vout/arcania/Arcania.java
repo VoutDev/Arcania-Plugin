@@ -7,6 +7,8 @@ import me.vout.arcania.listener.GuiListener;
 import me.vout.arcania.manager.ArcaniaEnchantManager;
 import me.vout.arcania.manager.ConfigManager;
 import me.vout.arcania.manager.GuiManager;
+import me.vout.arcania.util.ItemHelper;
+
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -27,6 +29,7 @@ public final class Arcania extends JavaPlugin {
         saveDefaultConfig();
         reloadManagers();
         registerCommands();
+        ItemHelper.initFurnaceRecipes();
         // Plugin startup logic
 
     }
