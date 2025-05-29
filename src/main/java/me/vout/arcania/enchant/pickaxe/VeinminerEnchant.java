@@ -49,9 +49,9 @@ public class VeinminerEnchant extends ArcaniaEnchant {
 
             if (block.getType() != targetType) continue;
             // make sure we don't add the block if it's already in the list of blocks to break or attempt to break
-            if (!blocksToBreak.contains(block) && !blocksToAttemptToBreak.contains(block)) {
+            if (!blocksToBreak.contains(block) && !blocksToAttemptToBreak.contains(block) && !block.equals(startBlock)) {
                 blocksToBreak.add(block);
-            }            
+            }
 
             // Check all 26 neighbors in a 3x3x3 cube
             for (int dx = -1; dx <= 1; dx++) {
