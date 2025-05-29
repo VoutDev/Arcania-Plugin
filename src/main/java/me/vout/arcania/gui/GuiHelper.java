@@ -1,7 +1,6 @@
 package me.vout.arcania.gui;
 
 import me.vout.arcania.Arcania;
-import me.vout.arcania.enchant.weapon.FrostbiteEnchant;
 import me.vout.arcania.gui.enchanter.EnchanterActionsEnum;
 import me.vout.arcania.gui.enchants.EnchantsFilterEnum;
 import org.bukkit.NamespacedKey;

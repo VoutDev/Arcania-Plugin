@@ -3,7 +3,6 @@ package me.vout.arcania.gui.main;
 import me.vout.arcania.gui.GuiTypeEnum;
 import me.vout.arcania.gui.base.GuiHolder;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
 
 public class MainMenuHolder implements GuiHolder {
 

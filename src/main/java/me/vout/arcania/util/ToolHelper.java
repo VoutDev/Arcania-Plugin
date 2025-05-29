@@ -1,6 +1,5 @@
 package me.vout.arcania.util;
 
-import me.vout.arcania.Arcania;
 import me.vout.arcania.enchant.ArcaniaEnchant;
 import me.vout.arcania.enchant.pickaxe.EnrichmentEnchant;
 import me.vout.arcania.enchant.pickaxe.QuarryEnchant;
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
 
 
 public class ToolHelper {

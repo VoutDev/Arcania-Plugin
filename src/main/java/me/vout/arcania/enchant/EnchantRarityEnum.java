@@ -1,8 +1,5 @@
 package me.vout.arcania.enchant;
 
-
-import org.bukkit.ChatColor;
-
 public enum EnchantRarityEnum {
     COMMON("#868D91", "Common", 5),
     UNCOMMON("#67A168","Uncommon", 10),

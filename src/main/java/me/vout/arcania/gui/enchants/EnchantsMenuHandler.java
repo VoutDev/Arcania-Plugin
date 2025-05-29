@@ -1,11 +1,8 @@
 package me.vout.arcania.gui.enchants;
 
 import me.vout.arcania.gui.GuiHelper;
-import me.vout.arcania.gui.GuiTypeEnum;
-import me.vout.arcania.gui.main.MainMenuHolder;
 import me.vout.arcania.manager.GuiManager;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

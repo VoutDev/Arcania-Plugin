@@ -15,7 +15,8 @@ import java.util.*;
 
 public class TinkererMenuHandler {
 
-    //TODO Require xp to combine enchants or apply enchants (show a green or red block between input2 and output telling the xp amount required)
+    //TODO: Require xp to combine enchants or apply enchants (show a green or red block between input2 and output telling the xp amount required)
+    
     public static void handler(InventoryClickEvent event) {
         // This doesn't seem to work at all
         int clickedSlot = event.getSlot();

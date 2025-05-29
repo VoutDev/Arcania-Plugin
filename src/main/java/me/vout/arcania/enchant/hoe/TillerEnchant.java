@@ -5,18 +5,11 @@ import me.vout.arcania.enchant.EnchantRarityEnum;
 import me.vout.arcania.util.ItemHelper;
 import me.vout.arcania.util.ToolHelper;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TillerEnchant extends ArcaniaEnchant {
 
