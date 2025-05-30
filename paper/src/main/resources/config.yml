@@ -1,0 +1,29 @@
+# Default config for Arcania plugin
+utility:
+  fix-enchant-check: false
+
+enchant:
+  enrichment:
+    xp-multiplier:
+      - 0.75
+      - 1.0
+      - 1.5
+    k: 10.0
+  essence:
+    xp-multiplier:
+      - 0.75
+      - 1.0
+      - 1.5
+    k: 10.0
+  veinminer:
+    max-blocks: 10
+    whitelisted-blocks:
+      - '*_ORE'
+      - STONE
+      - ANCIENT_DEBRIS
+      - GRANITE
+      - DIORITE
+      - ANDESITE
+      - TUFF
+      - DEEPSLATE
+      - NETHERRACK

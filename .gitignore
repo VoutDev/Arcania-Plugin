@@ -1,12 +1,12 @@
 spigot/*
 !spigot/install.sh
-!spigot/src/*
+!spigot/src/
 !spigot/build.sh
 !spigot/pom.xml
 
 paper/*
 !paper/install.sh
-!paper/src/*
+!paper/src/
 !paper/build.sh
 !paper/pom.xml
 

@@ -1,0 +1,7 @@
+name: Arcania
+version: '1.0'
+main: me.vout.arcania.Arcania
+description: Arcania
+api-version: '1.21.5'
+bootstrapper: me.vout.arcania.ArcaniaBootstrap
+loader: me.vout.arcania.ArcaniaLoader
