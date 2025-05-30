@@ -1,7 +1,11 @@
-server
+spigot/BuildData
+spigot/Spigot
+spigot/Bukkit
+spigot/CraftBukkit
+spigot/work
+spigot/BuildTools*
+spigot/apache-maven-*
+spigot/spigot.jar
+server/
+
 target
-.project
-.classpath
-.settings
-.vscode
-build.sh
