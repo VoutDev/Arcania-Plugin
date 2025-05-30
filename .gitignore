@@ -8,4 +8,4 @@ spigot/apache-maven-*
 spigot/spigot.jar
 server/
 
-target
+target/
