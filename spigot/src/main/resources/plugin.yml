@@ -1,6 +1,6 @@
 name: Arcania
 version: '${project.version}'
-main: me.vout.arcania.Arcania
+main: me.vout.spigot.arcania.Arcania
 api-version: '1.21'
 load: STARTUP
 authors: [Vout, Lmvdzande]

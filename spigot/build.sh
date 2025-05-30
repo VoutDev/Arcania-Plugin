@@ -4,4 +4,4 @@ cd "$(dirname "$0")"
 
 mvn install 
 
-cp target/Arcania-1.0.jar server/plugins/spigot/Arcania.jar
+cp target/Arcania-Spigot-1.0.jar ../server/spigot/plugins/Arcania.jar

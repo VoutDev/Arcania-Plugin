@@ -4,30 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>me.vout</groupId>
-  <artifactId>Arcania</artifactId>
-  <version>1.0</version>
+  <parent>
+    <groupId>me.vout</groupId>
+    <artifactId>Arcania</artifactId>
+    <version>1.0</version>
+  </parent>
+
+  <groupId>me.vout.spigot</groupId>
+  <artifactId>Arcania-Spigot</artifactId>
   <packaging>jar</packaging>
 
-  <name>Arcania</name>
+  <name>Arcania Spigot</name>
+  <description>Custom enchants plugin</description>
 
-    <description>Custom enchants plugin</description>
-    <properties>
-    <java.version>1.8</java.version>
+  <properties>
+    <java.version>16</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <source>16</source>
-          <target>16</target>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>

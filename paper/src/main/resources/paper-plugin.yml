@@ -1,7 +1,7 @@
 name: Arcania
 version: '1.0'
-main: me.vout.arcania.Arcania
-description: Arcania
+main: me.vout.paper.arcania.Arcania
+description: Custom enchants plugin
 api-version: '1.21.5'
-bootstrapper: me.vout.arcania.ArcaniaBootstrap
-loader: me.vout.arcania.ArcaniaLoader
+bootstrapper: me.vout.paper.arcania.ArcaniaBootstrap
+# loader: me.vout.paper.arcania.ArcaniaLoader
