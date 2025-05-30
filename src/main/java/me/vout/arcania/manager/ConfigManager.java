@@ -19,11 +19,15 @@ public class ConfigManager {
         Arcania.getInstance().getLogger().info("Reloading configs");
         Arcania.getInstance().reloadConfig();
         FileConfiguration config = Arcania.getInstance().getConfig();
+        
         fixEnchantCheckEnabled = config.getBoolean("utility.fix-enchant-check", false);
+        
         veinminerMaxBlocks = config.getInt("enchant.veinminer.max-blocks", 10);
         veinminerWhitelistedBlocks = config.getStringList("enchant.veinminer.whitelisted-blocks");
+        
         essenceXpMultiplier = config.getDoubleList("enchant.essence.xp-multiplier");
         essenceK = config.getDouble("enchant.essence.k", 10.0);
+        
         enrichmentXpMultiplier = config.getDoubleList("enchant.enrichment.xp-multiplier");
         enrichmentK = config.getDouble("enchant.enrichment.k", 10.0);
     }
