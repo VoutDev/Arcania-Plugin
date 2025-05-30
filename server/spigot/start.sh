@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd "$(dirname "$0")" 
-
-cd server
+cd "$(dirname "$0")"
 
 java -Xms4G -Xmx6G -jar spigot.jar nogui

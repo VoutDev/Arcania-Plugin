@@ -1,5 +1,18 @@
 spigot/*
 !spigot/install.sh
-server/
+!spigot/src/*
+!spigot/build.sh
+!spigot/pom.xml
 
-target/
+paper/*
+!paper/install.sh
+!paper/src/*
+!paper/build.sh
+!paper/pom.xml
+
+
+server/paper/*
+!server/paper/start.sh
+
+server/spigot/*
+!server/spigot/start.sh
