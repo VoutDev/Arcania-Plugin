@@ -1,16 +1,17 @@
 package me.vout.spigot.arcania.enchant.weapon;
 
+import java.util.List;
+import java.util.Map;
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDeathEvent;
+
 import me.vout.spigot.arcania.Arcania;
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
 import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
 import me.vout.spigot.arcania.enchant.tool.MagnetEnchant;
 import me.vout.spigot.arcania.manager.ConfigManager;
 import me.vout.spigot.arcania.util.ItemHelper;
-import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDeathEvent;
-
-import java.util.List;
-import java.util.Map;
 
 public class EssenceEnchant extends ArcaniaEnchant {
     public static final EssenceEnchant INSTANCE = new EssenceEnchant();

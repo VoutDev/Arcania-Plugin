@@ -1,13 +1,10 @@
 package me.vout.spigot.arcania.gui.enchanter;
 
-import me.vout.spigot.arcania.Arcania;
-import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.EnchantExtraEnum;
-import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
-import me.vout.spigot.arcania.gui.GuiHelper;
-import me.vout.spigot.arcania.util.EnchantHelper;
-import me.vout.spigot.arcania.util.InventoryHelper;
-import me.vout.spigot.arcania.util.ItemHelper;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,10 +13,14 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
+import me.vout.spigot.arcania.Arcania;
+import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
+import me.vout.spigot.arcania.enchant.EnchantExtraEnum;
+import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
+import me.vout.spigot.arcania.gui.GuiHelper;
+import me.vout.spigot.arcania.util.EnchantHelper;
+import me.vout.spigot.arcania.util.InventoryHelper;
+import me.vout.spigot.arcania.util.ItemHelper;
 
 public class EnchanterMenuHandler {
     public static void handler(InventoryClickEvent event) {

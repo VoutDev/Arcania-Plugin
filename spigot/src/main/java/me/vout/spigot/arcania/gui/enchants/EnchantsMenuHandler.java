@@ -1,11 +1,12 @@
 package me.vout.spigot.arcania.gui.enchants;
 
-import me.vout.spigot.arcania.gui.GuiHelper;
-import me.vout.spigot.arcania.manager.GuiManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import me.vout.spigot.arcania.gui.GuiHelper;
+import me.vout.spigot.arcania.manager.GuiManager;
 
 public class EnchantsMenuHandler {
     public static void handler(InventoryClickEvent event, GuiManager guiManager) {

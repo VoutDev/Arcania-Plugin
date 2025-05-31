@@ -1,55 +1,19 @@
 package me.vout.spigot.arcania.enchant.pickaxe;
 
-import me.vout.spigot.arcania.Arcania;
-import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
-import me.vout.spigot.arcania.util.ItemHelper;
+import java.util.List;
+import java.util.logging.Level;
+
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
+import me.vout.spigot.arcania.Arcania;
+import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
+import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
+import me.vout.spigot.arcania.util.ItemHelper;
 
-/**
- * Quarry Enchantment
- * 
- * An efficient mining enchantment that breaks blocks in a 3x3 pattern based on the player's mining direction.
- * 
- * Technical Specifications:
- * - Rarity: RARE
- * - Max Level: 1
- * - Success Rate: 50%
- * - Cost: 15 levels
- * - Applies to: All digging tools (pickaxe, shovel)
- * 
- * Functionality:
- * - Breaks blocks in a 3x3 pattern
- * - Pattern orientation adapts to player's mining face:
- *   - Looking UP/DOWN: Horizontal plane (X-Z plane)
- *   - Looking NORTH/SOUTH: Vertical plane (X-Y plane)
- *   - Looking EAST/WEST: Vertical plane (Y-Z plane)
- * 
- * Block Breaking Logic:
- * - Only breaks blocks that are valid for the tool type
- * - Checks tool durability before breaking additional blocks
- * - Preserves tool enchantments effects on broken blocks
- * - Respects block breaking permissions
- * 
- * Recursion Prevention:
- * - Uses metadata tag 'arcania:quarried' to prevent infinite loops
- * - Tracks blocks already queued for breaking
- * - Ensures each block is only processed once
- * 
- * Integration:
- * - Compatible with all other mining enchantments
- * - Works with the block breaking queue system for lag-free operation
- * - Properly handles tool durability checks
- * - Can trigger other enchantments (e.g., VeinMiner) on broken blocks
- */
 public class QuarryEnchant extends ArcaniaEnchant {
 
     public static final QuarryEnchant INSTANCE = new QuarryEnchant();

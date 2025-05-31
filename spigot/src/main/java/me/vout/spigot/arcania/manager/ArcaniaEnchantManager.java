@@ -1,5 +1,11 @@
 package me.vout.spigot.arcania.manager;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
 import me.vout.spigot.arcania.enchant.bow.BlinkEnchantment;
 import me.vout.spigot.arcania.enchant.hoe.HarvesterEnchant;
@@ -11,8 +17,6 @@ import me.vout.spigot.arcania.enchant.tool.MagnetEnchant;
 import me.vout.spigot.arcania.enchant.tool.SmeltEnchant;
 import me.vout.spigot.arcania.enchant.weapon.EssenceEnchant;
 import me.vout.spigot.arcania.enchant.weapon.FrostbiteEnchant;
-
-import java.util.*;
 
 public class ArcaniaEnchantManager {
     private final List<ArcaniaEnchant> enchants = new ArrayList<>();

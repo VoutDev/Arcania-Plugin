@@ -16,14 +16,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import io.papermc.paper.enchantments.EnchantmentRarity;
-import io.papermc.paper.registry.RegistryKey;
-import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.registry.RegistryTags;
 import me.vout.paper.arcania.util.InventoryHelper;
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
 public class MagnetEnchant extends ArcaniaEnchant {
@@ -96,7 +93,7 @@ public class MagnetEnchant extends ArcaniaEnchant {
     
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
+        return null;
     }
 
     @Override
@@ -116,44 +113,7 @@ public class MagnetEnchant extends ArcaniaEnchant {
 
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, 
-            ItemTypeKeys.ENCHANTED_BOOK, 
-            
-            ItemTypeKeys.WOODEN_PICKAXE,
-            ItemTypeKeys.STONE_PICKAXE, 
-            ItemTypeKeys.IRON_PICKAXE, 
-            ItemTypeKeys.GOLDEN_PICKAXE, 
-            ItemTypeKeys.DIAMOND_PICKAXE, 
-            ItemTypeKeys.NETHERITE_PICKAXE,
-
-            ItemTypeKeys.WOODEN_AXE,
-            ItemTypeKeys.STONE_AXE,
-            ItemTypeKeys.IRON_AXE,
-            ItemTypeKeys.GOLDEN_AXE,
-            ItemTypeKeys.DIAMOND_AXE,
-            ItemTypeKeys.NETHERITE_AXE,
-
-            ItemTypeKeys.WOODEN_SHOVEL,
-            ItemTypeKeys.STONE_SHOVEL,
-            ItemTypeKeys.IRON_SHOVEL,
-            ItemTypeKeys.GOLDEN_SHOVEL,
-            ItemTypeKeys.DIAMOND_SHOVEL,
-            ItemTypeKeys.NETHERITE_SHOVEL,
-
-            ItemTypeKeys.WOODEN_HOE,
-            ItemTypeKeys.STONE_HOE,
-            ItemTypeKeys.IRON_HOE,
-            ItemTypeKeys.GOLDEN_HOE,
-            ItemTypeKeys.DIAMOND_HOE,
-            ItemTypeKeys.NETHERITE_HOE,
-
-            ItemTypeKeys.WOODEN_SWORD,
-            ItemTypeKeys.STONE_SWORD,
-            ItemTypeKeys.IRON_SWORD,
-            ItemTypeKeys.GOLDEN_SWORD,
-            ItemTypeKeys.DIAMOND_SWORD,
-            ItemTypeKeys.NETHERITE_SWORD
-        );    
+        return RegistrySet.keySet(RegistryTags.SWORDS_AND_TOOLS.registryKey());
     }
 
     @Override
@@ -168,44 +128,7 @@ public class MagnetEnchant extends ArcaniaEnchant {
 
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, 
-            ItemTypeKeys.ENCHANTED_BOOK, 
-
-            ItemTypeKeys.WOODEN_PICKAXE,
-            ItemTypeKeys.STONE_PICKAXE, 
-            ItemTypeKeys.IRON_PICKAXE, 
-            ItemTypeKeys.GOLDEN_PICKAXE, 
-            ItemTypeKeys.DIAMOND_PICKAXE, 
-            ItemTypeKeys.NETHERITE_PICKAXE,
-
-            ItemTypeKeys.WOODEN_AXE,
-            ItemTypeKeys.STONE_AXE,
-            ItemTypeKeys.IRON_AXE,
-            ItemTypeKeys.GOLDEN_AXE,
-            ItemTypeKeys.DIAMOND_AXE,
-            ItemTypeKeys.NETHERITE_AXE,
-
-            ItemTypeKeys.WOODEN_SHOVEL,
-            ItemTypeKeys.STONE_SHOVEL,
-            ItemTypeKeys.IRON_SHOVEL,
-            ItemTypeKeys.GOLDEN_SHOVEL,
-            ItemTypeKeys.DIAMOND_SHOVEL,
-            ItemTypeKeys.NETHERITE_SHOVEL,
-
-            ItemTypeKeys.WOODEN_HOE,
-            ItemTypeKeys.STONE_HOE,
-            ItemTypeKeys.IRON_HOE,
-            ItemTypeKeys.GOLDEN_HOE,
-            ItemTypeKeys.DIAMOND_HOE,
-            ItemTypeKeys.NETHERITE_HOE,
-
-            ItemTypeKeys.WOODEN_SWORD,
-            ItemTypeKeys.STONE_SWORD,
-            ItemTypeKeys.IRON_SWORD,
-            ItemTypeKeys.GOLDEN_SWORD,
-            ItemTypeKeys.DIAMOND_SWORD,
-            ItemTypeKeys.NETHERITE_SWORD
-        );
+        return RegistrySet.keySet(RegistryTags.SWORDS_AND_TOOLS.registryKey());
     }
 
     @Override

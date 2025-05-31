@@ -1,8 +1,8 @@
 package me.vout.spigot.arcania.gui.disenchanter;
 
-import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
-import me.vout.spigot.arcania.util.EnchantHelper;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.ExperienceOrb;
@@ -12,8 +12,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
-import java.util.Map;
+import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
+import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
+import me.vout.spigot.arcania.util.EnchantHelper;
 
 public class DisenchanterMenuHandler {
 

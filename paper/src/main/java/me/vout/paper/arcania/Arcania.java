@@ -12,7 +12,7 @@ import io.papermc.paper.registry.RegistryKey;
 import me.vout.paper.arcania.listener.ArcaniaEnchantListener;
 import me.vout.paper.arcania.listener.GuiListener;
 import me.vout.paper.arcania.manager.ConfigManager;
-import me.vout.paper.arcania.util.ItemHelper;
+import me.vout.paper.arcania.util.FurnaceRecipeHelper;
 
 public final class Arcania extends JavaPlugin {
     private static Arcania instance;
@@ -32,7 +32,7 @@ public final class Arcania extends JavaPlugin {
         saveDefaultConfig();
         reloadManagers(server);
         loadEnchantRegistry();
-        ItemHelper.initFurnaceRecipes();
+        FurnaceRecipeHelper.initFurnaceRecipes();
     }
 
     @Override

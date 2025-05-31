@@ -1,10 +1,10 @@
 package me.vout.spigot.arcania.manager;
 
-import me.vout.spigot.arcania.Arcania;
-
 import java.util.List;
 
 import org.bukkit.configuration.file.FileConfiguration;
+
+import me.vout.spigot.arcania.Arcania;
 
 public class ConfigManager {
     private boolean fixEnchantCheckEnabled;

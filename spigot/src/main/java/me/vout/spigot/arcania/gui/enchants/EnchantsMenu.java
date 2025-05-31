@@ -1,5 +1,15 @@
 package me.vout.spigot.arcania.gui.enchants;
 
+import java.util.Comparator;
+import java.util.Deque;
+import java.util.List;
+
+import org.bukkit.Material;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
 import me.vout.spigot.arcania.Arcania;
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
 import me.vout.spigot.arcania.enchant.EnchantExtraEnum;
@@ -10,15 +20,6 @@ import me.vout.spigot.arcania.gui.GuiTypeEnum;
 import me.vout.spigot.arcania.gui.PersistentDataEnum;
 import me.vout.spigot.arcania.util.EnchantHelper;
 import me.vout.spigot.arcania.util.ItemHelper;
-import org.bukkit.Material;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Comparator;
-import java.util.Deque;
-import java.util.List;
 
 public class EnchantsMenu {
     public static Inventory build(Deque<GuiTypeEnum> guiHistory, EnchantsFilterEnum filter) {

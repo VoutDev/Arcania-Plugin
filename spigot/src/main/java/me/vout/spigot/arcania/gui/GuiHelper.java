@@ -1,12 +1,13 @@
 package me.vout.spigot.arcania.gui;
 
-import me.vout.spigot.arcania.Arcania;
-import me.vout.spigot.arcania.gui.enchanter.EnchanterActionsEnum;
-import me.vout.spigot.arcania.gui.enchants.EnchantsFilterEnum;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+
+import me.vout.spigot.arcania.Arcania;
+import me.vout.spigot.arcania.gui.enchanter.EnchanterActionsEnum;
+import me.vout.spigot.arcania.gui.enchants.EnchantsFilterEnum;
 
 public class GuiHelper {
     public static boolean isBackButton(ItemStack item) {

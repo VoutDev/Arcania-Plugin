@@ -1,6 +1,15 @@
 package me.vout.spigot.arcania;
 
-import me.vout.spigot.arcania.command.*;
+import java.util.Objects;
+
+import org.bukkit.event.HandlerList;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import me.vout.spigot.arcania.command.ArcaniaCommand;
+import me.vout.spigot.arcania.command.DisenchanterCommand;
+import me.vout.spigot.arcania.command.EnchanterCommand;
+import me.vout.spigot.arcania.command.EnchantsCommand;
+import me.vout.spigot.arcania.command.TinkererCommand;
 import me.vout.spigot.arcania.command.tab.ArcaniaTabCompleter;
 import me.vout.spigot.arcania.listener.ArcaniaEnchantListener;
 import me.vout.spigot.arcania.listener.GuiListener;
@@ -8,11 +17,6 @@ import me.vout.spigot.arcania.manager.ArcaniaEnchantManager;
 import me.vout.spigot.arcania.manager.ConfigManager;
 import me.vout.spigot.arcania.manager.GuiManager;
 import me.vout.spigot.arcania.util.ItemHelper;
-
-import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Objects;
 
 public final class Arcania extends JavaPlugin {
     private static Arcania instance;

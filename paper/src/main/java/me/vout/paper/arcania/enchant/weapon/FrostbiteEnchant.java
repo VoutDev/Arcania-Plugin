@@ -25,14 +25,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import io.papermc.paper.enchantments.EnchantmentRarity;
-import io.papermc.paper.registry.RegistryKey;
-import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import net.kyori.adventure.key.Key;
+import me.vout.paper.arcania.enchant.registry.RegistryTags;
 import net.kyori.adventure.text.Component;
 
 public class FrostbiteEnchant extends ArcaniaEnchant {
@@ -171,7 +168,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
     
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
+        return null;
     }
 
     @Override
@@ -191,7 +188,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
 
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_SWORD, ItemTypeKeys.IRON_SWORD, ItemTypeKeys.GOLDEN_SWORD, ItemTypeKeys.DIAMOND_SWORD, ItemTypeKeys.NETHERITE_SWORD, ItemTypeKeys.BOW, ItemTypeKeys.CROSSBOW);
+        return RegistrySet.keySet(RegistryTags.SWORDS_AND_RANGED.registryKey());
     }
 
     @Override
@@ -206,7 +203,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
 
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_SWORD, ItemTypeKeys.IRON_SWORD, ItemTypeKeys.GOLDEN_SWORD, ItemTypeKeys.DIAMOND_SWORD, ItemTypeKeys.NETHERITE_SWORD, ItemTypeKeys.BOW, ItemTypeKeys.CROSSBOW);
+        return RegistrySet.keySet(RegistryTags.SWORDS_AND_RANGED.registryKey());
     }
 
     @Override

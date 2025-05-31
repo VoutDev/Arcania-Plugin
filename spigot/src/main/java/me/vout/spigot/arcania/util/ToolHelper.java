@@ -1,19 +1,15 @@
 package me.vout.spigot.arcania.util;
 
-import me.vout.spigot.arcania.Arcania;
-import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.pickaxe.EnrichmentEnchant;
-import me.vout.spigot.arcania.enchant.pickaxe.QuarryEnchant;
-import me.vout.spigot.arcania.enchant.pickaxe.VeinminerEnchant;
-import me.vout.spigot.arcania.enchant.tool.MagnetEnchant;
-import me.vout.spigot.arcania.enchant.tool.SmeltEnchant;
-import me.vout.spigot.arcania.enchant.weapon.EssenceEnchant;
-import org.bukkit.Location;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
 
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -22,11 +18,14 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
+import me.vout.spigot.arcania.Arcania;
+import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
+import me.vout.spigot.arcania.enchant.pickaxe.EnrichmentEnchant;
+import me.vout.spigot.arcania.enchant.pickaxe.QuarryEnchant;
+import me.vout.spigot.arcania.enchant.pickaxe.VeinminerEnchant;
+import me.vout.spigot.arcania.enchant.tool.MagnetEnchant;
+import me.vout.spigot.arcania.enchant.tool.SmeltEnchant;
+import me.vout.spigot.arcania.enchant.weapon.EssenceEnchant;
 
 
 
