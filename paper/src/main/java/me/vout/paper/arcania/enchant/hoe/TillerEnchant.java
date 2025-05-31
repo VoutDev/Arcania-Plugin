@@ -38,9 +38,9 @@ public class TillerEnchant extends ArcaniaEnchant {
                 "Tills a 3x3 around initial block",
                 1,
                 1,
-                1,
-                1,
-                1,
+                5,
+                10,
+                15,
                 1
         );
     }

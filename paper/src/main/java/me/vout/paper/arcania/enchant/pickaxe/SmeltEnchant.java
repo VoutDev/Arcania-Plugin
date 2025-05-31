@@ -30,9 +30,9 @@ public class SmeltEnchant extends ArcaniaEnchant {
             "Instantly smelt the block into it's smelting result",
             1,
             1,
-            1,
-            1,
-            1,
+            5,
+            10,
+            15,
             1
         );
     }
@@ -83,9 +83,12 @@ public class SmeltEnchant extends ArcaniaEnchant {
         return 0;
     }
     
+    /**
+     * Silk Touch is exclusive with Smelt
+     */
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
+        return RegistrySet.keySet(RegistryKey.ENCHANTMENT, EnchantmentKeys.SILK_TOUCH);
     }
 
     @Override

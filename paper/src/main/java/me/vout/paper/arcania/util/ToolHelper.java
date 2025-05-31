@@ -207,9 +207,10 @@ public class ToolHelper {
         // give the xp
         if (xpToGive[0] > 0) {
             if (hasEnrichment) {
+                int enrichmentEnchantLevel = enchants.get(Arcania.getEnchantRegistry().get(EnrichmentEnchant.INSTANCE.getKey()));
                 // Arcania.getInstance().getLogger().log(Level.INFO, "xpToGive before enrichment: " + xpToGive[0]);
                 // Arcania.getInstance().getLogger().log(Level.INFO, "enrichment level: " + enchants.get(EnrichmentEnchant.INSTANCE));
-                xpToGive[0] = EssenceEnchant.getScaledXP(xpToGive[0], enchants.get(EnrichmentEnchant.INSTANCE)); 
+                xpToGive[0] = EssenceEnchant.getScaledXP(xpToGive[0], enrichmentEnchantLevel);
                 // Arcania.getInstance().getLogger().log(Level.INFO, "xpToGive after enrichment: " + xpToGive[0]);
             } else {
                 // Arcania.getInstance().getLogger().log(Level.INFO, "xpToGive:" + xpToGive[0]);

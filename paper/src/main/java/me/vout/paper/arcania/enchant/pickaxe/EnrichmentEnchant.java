@@ -75,8 +75,8 @@ public class EnrichmentEnchant extends ArcaniaEnchant {
                 3,
                 1,
                 3,
-                1,
-                1,
+                10,
+                15,
                 1
         );
     }

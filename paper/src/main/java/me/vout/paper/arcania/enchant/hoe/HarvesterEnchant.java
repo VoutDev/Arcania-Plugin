@@ -45,9 +45,9 @@ public class HarvesterEnchant extends ArcaniaEnchant {
                 "Right click to collect and replant crop",
                 1,
                 1,
-                1,
-                1,
-                1,
+                4,
+                10,
+                15,
                 1
         );
     }

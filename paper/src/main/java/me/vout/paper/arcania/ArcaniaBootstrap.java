@@ -15,6 +15,7 @@ import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.data.EnchantmentRegistryEntry;
+import io.papermc.paper.registry.data.EnchantmentRegistryEntry.EnchantmentCost;
 import io.papermc.paper.registry.event.RegistryEvents;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.tags.EnchantmentTagKeys;
@@ -47,11 +48,13 @@ public class ArcaniaBootstrap implements PluginBootstrap {
                     b -> 
                         b.description(Component.text(enchant.getName()))
                         .supportedItems(enchant.getSupportedItems())
+                        .primaryItems(enchant.getPrimaryItems())
+                        .exclusiveWith(enchant.getExclusiveWith())
                         .anvilCost(enchant.getAnvilCost())
                         .maxLevel(enchant.getMaxLevel())
                         .weight(enchant.getWeight())
-                        .minimumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMinModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
-                        .maximumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMaxModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
+                        .minimumCost(EnchantmentCost.of(enchant.getStartLevel(), enchant.getMinModifiedCost(enchant.getStartLevel())))
+                        .maximumCost(EnchantmentCost.of(enchant.getStartLevel(), enchant.getMaxModifiedCost(enchant.getStartLevel())))
                         .activeSlots(enchant.getActiveSlotGroups())
                 );
             }

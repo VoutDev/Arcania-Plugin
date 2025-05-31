@@ -77,8 +77,8 @@ public class QuarryEnchant extends ArcaniaEnchant {
                 1,
                 1,
                 2,
-                1,
-                1,
+                10,
+                15,
                 1
         );
     }

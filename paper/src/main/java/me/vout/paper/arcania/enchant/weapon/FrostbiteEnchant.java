@@ -47,8 +47,8 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
             2, 
             1, 
             10,
-            1,
-            3,
+            10,
+            15,
             1
         );
     }
@@ -182,20 +182,12 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
 
     @Override
     public int getMaxModifiedCost(int arg0) {
-        return switch (arg0) {
-            case 1 -> 15;
-            case 2 -> 30;
-            default -> 0;
-        };
+        return maxModifiedCost;
     }
 
     @Override
     public int getMinModifiedCost(int arg0) {
-        return switch (arg0) {
-            case 1 -> 15;
-            case 2 -> 30;
-            default -> 0;
-        };
+        return minModifiedCost;
     }
 
     @Override

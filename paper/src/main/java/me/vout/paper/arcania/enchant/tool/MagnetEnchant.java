@@ -36,8 +36,8 @@ public class MagnetEnchant extends ArcaniaEnchant {
             1,
             1,
             5,
-            1,
-            1,
+            10,
+            15,
             1
         );
     }

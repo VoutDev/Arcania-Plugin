@@ -38,9 +38,9 @@ public class EssenceEnchant extends ArcaniaEnchant {
                 "Increases xp dropped by mobs",
                 3,
                 1,
-                1,
-                1,
-                1,
+                10,
+                10,
+                15,
                 1
         );
     }
