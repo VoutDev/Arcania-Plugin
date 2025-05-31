@@ -15,10 +15,10 @@ import org.jetbrains.annotations.Nullable;
 import io.papermc.paper.enchantments.EnchantmentRarity;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.registry.RegistryTags;
 import net.kyori.adventure.text.Component;
 
 public class SmeltEnchant extends ArcaniaEnchant {
@@ -107,7 +107,7 @@ public class SmeltEnchant extends ArcaniaEnchant {
 
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_PICKAXE, ItemTypeKeys.IRON_PICKAXE, ItemTypeKeys.GOLDEN_PICKAXE, ItemTypeKeys.DIAMOND_PICKAXE, ItemTypeKeys.NETHERITE_PICKAXE);
+        return RegistrySet.keySet(RegistryTags.PICKAXES.registryKey());
     }
 
     @Override
@@ -122,7 +122,7 @@ public class SmeltEnchant extends ArcaniaEnchant {
 
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_PICKAXE, ItemTypeKeys.IRON_PICKAXE, ItemTypeKeys.GOLDEN_PICKAXE, ItemTypeKeys.DIAMOND_PICKAXE, ItemTypeKeys.NETHERITE_PICKAXE);
+        return RegistrySet.keySet(RegistryTags.PICKAXES.registryKey());
     }
 
     @Override

@@ -21,17 +21,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import io.papermc.paper.enchantments.EnchantmentRarity;
-import io.papermc.paper.registry.RegistryKey;
-import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.registry.RegistryTags;
 // import me.vout.paper.arcania.enchant.EnchantRarityEnum;
 import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
 import me.vout.paper.arcania.util.InventoryHelper;
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
 public class HarvesterEnchant extends ArcaniaEnchant {
@@ -126,7 +123,7 @@ public class HarvesterEnchant extends ArcaniaEnchant {
     
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
+        return null;
     }
 
     @Override
@@ -146,7 +143,7 @@ public class HarvesterEnchant extends ArcaniaEnchant {
 
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.WOODEN_HOE, ItemTypeKeys.STONE_HOE, ItemTypeKeys.IRON_HOE, ItemTypeKeys.GOLDEN_HOE, ItemTypeKeys.DIAMOND_HOE, ItemTypeKeys.NETHERITE_HOE);
+        return RegistrySet.keySet(RegistryTags.HOES.registryKey());
     }
 
     @Override
@@ -161,7 +158,7 @@ public class HarvesterEnchant extends ArcaniaEnchant {
 
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.WOODEN_HOE, ItemTypeKeys.STONE_HOE, ItemTypeKeys.IRON_HOE, ItemTypeKeys.GOLDEN_HOE, ItemTypeKeys.DIAMOND_HOE, ItemTypeKeys.NETHERITE_HOE);
+        return RegistrySet.keySet(RegistryTags.HOES.registryKey());
     }
 
     @Override
