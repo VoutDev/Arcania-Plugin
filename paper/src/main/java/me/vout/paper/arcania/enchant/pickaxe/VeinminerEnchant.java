@@ -2,6 +2,7 @@ package me.vout.paper.arcania.enchant.pickaxe;
 
 import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.util.ToolHelper;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
@@ -10,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ItemType;
@@ -127,7 +129,11 @@ public class VeinminerEnchant extends ArcaniaEnchant {
      * @param allBlocksToBreak List of blocks already queued for breaking
      * @return List of additional blocks to break as part of the vein
      */
-    public static void getBlocksToBreak(Player player, Block startBlock, Map<Enchantment, Integer> enchants, List<Block> allBlocksToBreak) {
+    public static void getBlocksToBreak(Player player, BlockBreakEvent event, ItemStack tool, Map<Enchantment, Integer> enchants, List<Block> allBlocksToBreak) {
+        Block startBlock = event.getBlock();
+        if (!ToolHelper.isValidToolForBlock(tool, startBlock)) {
+            return;
+        }
         Enchantment veinminerEnchant = Arcania.getEnchantRegistry().get(Key.key("arcania", "veinminer"));
         int maxBlocksToVienMine = Arcania.getConfigManager().getVeinminerMaxBlocks() + enchants.get(veinminerEnchant) * 5;
         Material targetType = startBlock.getType();

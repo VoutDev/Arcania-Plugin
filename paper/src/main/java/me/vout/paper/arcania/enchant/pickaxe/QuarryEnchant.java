@@ -2,6 +2,7 @@ package me.vout.paper.arcania.enchant.pickaxe;
 
 import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.util.ToolHelper;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
@@ -102,7 +103,7 @@ public class QuarryEnchant extends ArcaniaEnchant {
         // get the block to break
         Block block = event.getBlock();
         // check if the block is preferred tool
-        if (!block.isPreferredTool(item)) {
+        if (!ToolHelper.isValidToolForBlock(item, block)) {
             return;
         }
 
@@ -125,9 +126,7 @@ public class QuarryEnchant extends ArcaniaEnchant {
             boolean isAir = relative.getType().isAir();
             if (hardness < 0 || isAir) continue;
 
-            boolean isPreferredTool = relative.isPreferredTool(item);
-            // Arcania.getInstance().getLogger().log(Level.INFO, "isPreferredTool: " + isPreferredTool);
-            if (!isPreferredTool) continue;
+            if (!ToolHelper.isValidToolForBlock(item, relative)) continue;
 
             // Arcania.getInstance().getLogger().log(Level.INFO, "blocksToAttemptToBreak: " + blocksToAttemptToBreak.contains(relative));
             // Arcania.getInstance().getLogger().log(Level.INFO, "blocksToBreak: " + blocksToBreak.contains(relative));

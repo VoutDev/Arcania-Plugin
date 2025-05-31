@@ -11,9 +11,10 @@ import me.vout.paper.arcania.enchant.weapon.EssenceEnchant;
 import net.kyori.adventure.key.Key;
 
 import org.bukkit.Location;
-
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockType;
 import org.bukkit.enchantments.Enchantment;
 
 import org.bukkit.entity.Player;
@@ -24,11 +25,19 @@ import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
+import io.papermc.paper.datacomponent.DataComponentType;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.TypedKey;
+import io.papermc.paper.registry.set.RegistryKeySet;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
 
 
@@ -37,6 +46,15 @@ public class ToolHelper {
     
 
 
+
+    public static boolean isValidToolForBlock(ItemStack tool, Block block) {
+        TypedKey<BlockType> typedKeyBlockType = TypedKey.create(RegistryKey.BLOCK, block.getType().getKey());
+
+        boolean isValidToolForBlock = tool.getData(DataComponentTypes.TOOL).rules().stream().filter(rule -> rule.blocks().contains(typedKeyBlockType)).collect(Collectors.toList()).size() > 0;
+
+        // Arcania.getInstance().getLogger().log(Level.INFO, "isValidToolForBlock (block: " + block.getType().getKey() + "): " + isValidToolForBlock);
+        return isValidToolForBlock;
+    }
     /**
      * Custom break block logic
      * @param player The player breaking the block
@@ -57,7 +75,6 @@ public class ToolHelper {
         Block block = event.getBlock();
         // Arcania.getInstance().getLogger().log(Level.INFO, "block: " + block.getType().getHardness());
 
-        
         // prepare xp to give
         final float[] xpToGive = {event.getExpToDrop()};
 
@@ -118,7 +135,7 @@ public class ToolHelper {
             for (Block blockToBreak : veinminerQueue) {
                 if (VeinminerEnchant.isVeinMineBlock(blockToBreak.getType())) {
                     // Arcania.getInstance().getLogger().log(Level.INFO, "blockToBreak: " + blockToBreak.getType() + ' ' + blockToBreak.getLocation().toString());
-                    VeinminerEnchant.getBlocksToBreak(player, blockToBreak, enchants, additionalBlocksToBreak);
+                    VeinminerEnchant.getBlocksToBreak(player, event, tool, enchants, additionalBlocksToBreak);
 
                     additionalBlocksToBreak.forEach(veinMineBlock -> {
                         veinMineBlock.setMetadata("arcania:veinmined", new FixedMetadataValue(Arcania.getInstance(), true));
