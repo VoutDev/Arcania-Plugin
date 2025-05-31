@@ -2,6 +2,7 @@ package me.vout.paper.arcania.enchant.tool;
 
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
 import me.vout.paper.arcania.util.InventoryHelper;
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
 import java.util.Set;
@@ -20,7 +21,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import io.papermc.paper.enchantments.EnchantmentRarity;
+import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.keys.EnchantmentKeys;
+import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
+import io.papermc.paper.registry.set.RegistrySet;
 
 public class MagnetEnchant extends ArcaniaEnchant {
     public static  final MagnetEnchant INSTANCE = new MagnetEnchant();
@@ -47,145 +52,192 @@ public class MagnetEnchant extends ArcaniaEnchant {
 
     @Override
     public @NotNull String getTranslationKey() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTranslationKey'");
+        return "enchantment." + NAMESPACE + "." + key;
     }
 
     @Override
     public boolean canEnchantItem(@NotNull ItemStack arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'canEnchantItem'");
+        return true;
     }
 
     @Override
     public boolean conflictsWith(@NotNull Enchantment arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'conflictsWith'");
+        return false;
     }
 
     @Override
     public @NotNull Component description() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'description'");
+        return Component.text(description);
     }
 
     @Override
     public @NotNull Component displayName(int arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'displayName'");
+        return Component.text(name);
     }
 
     @Override
     public @NotNull Set<EquipmentSlotGroup> getActiveSlotGroups() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getActiveSlotGroups'");
+        return Set.of(EquipmentSlotGroup.MAINHAND);
     }
 
     @Override
     public int getAnvilCost() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAnvilCost'");
+        return anvilCost;
     }
 
     @Override
     public float getDamageIncrease(int arg0, @NotNull EntityCategory arg1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDamageIncrease'");
+        return 0;
     }
 
     @Override
     public float getDamageIncrease(int arg0, @NotNull EntityType arg1) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDamageIncrease'");
+        return 0;
     }
-
+    
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getExclusiveWith'");
-    }
-
-    @Override
-    public @NotNull EnchantmentTarget getItemTarget() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getItemTarget'");
+        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
     }
 
     @Override
     public int getMaxLevel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMaxLevel'");
+        return maxLevel;
     }
 
     @Override
     public int getMaxModifiedCost(int arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMaxModifiedCost'");
+        return maxModifiedCost;
     }
 
     @Override
     public int getMinModifiedCost(int arg0) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMinModifiedCost'");
+        return minModifiedCost;
     }
 
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPrimaryItems'");
+        return RegistrySet.keySet(RegistryKey.ITEM, 
+            ItemTypeKeys.ENCHANTED_BOOK, 
+            
+            ItemTypeKeys.WOODEN_PICKAXE,
+            ItemTypeKeys.STONE_PICKAXE, 
+            ItemTypeKeys.IRON_PICKAXE, 
+            ItemTypeKeys.GOLDEN_PICKAXE, 
+            ItemTypeKeys.DIAMOND_PICKAXE, 
+            ItemTypeKeys.NETHERITE_PICKAXE,
+
+            ItemTypeKeys.WOODEN_AXE,
+            ItemTypeKeys.STONE_AXE,
+            ItemTypeKeys.IRON_AXE,
+            ItemTypeKeys.GOLDEN_AXE,
+            ItemTypeKeys.DIAMOND_AXE,
+            ItemTypeKeys.NETHERITE_AXE,
+
+            ItemTypeKeys.WOODEN_SHOVEL,
+            ItemTypeKeys.STONE_SHOVEL,
+            ItemTypeKeys.IRON_SHOVEL,
+            ItemTypeKeys.GOLDEN_SHOVEL,
+            ItemTypeKeys.DIAMOND_SHOVEL,
+            ItemTypeKeys.NETHERITE_SHOVEL,
+
+            ItemTypeKeys.WOODEN_HOE,
+            ItemTypeKeys.STONE_HOE,
+            ItemTypeKeys.IRON_HOE,
+            ItemTypeKeys.GOLDEN_HOE,
+            ItemTypeKeys.DIAMOND_HOE,
+            ItemTypeKeys.NETHERITE_HOE,
+
+            ItemTypeKeys.WOODEN_SWORD,
+            ItemTypeKeys.STONE_SWORD,
+            ItemTypeKeys.IRON_SWORD,
+            ItemTypeKeys.GOLDEN_SWORD,
+            ItemTypeKeys.DIAMOND_SWORD,
+            ItemTypeKeys.NETHERITE_SWORD
+        );    
     }
 
     @Override
     public @NotNull EnchantmentRarity getRarity() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRarity'");
+        return EnchantmentRarity.RARE;
     }
 
     @Override
     public int getStartLevel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getStartLevel'");
+        return startLevel;
     }
 
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSupportedItems'");
+        return RegistrySet.keySet(RegistryKey.ITEM, 
+            ItemTypeKeys.ENCHANTED_BOOK, 
+
+            ItemTypeKeys.WOODEN_PICKAXE,
+            ItemTypeKeys.STONE_PICKAXE, 
+            ItemTypeKeys.IRON_PICKAXE, 
+            ItemTypeKeys.GOLDEN_PICKAXE, 
+            ItemTypeKeys.DIAMOND_PICKAXE, 
+            ItemTypeKeys.NETHERITE_PICKAXE,
+
+            ItemTypeKeys.WOODEN_AXE,
+            ItemTypeKeys.STONE_AXE,
+            ItemTypeKeys.IRON_AXE,
+            ItemTypeKeys.GOLDEN_AXE,
+            ItemTypeKeys.DIAMOND_AXE,
+            ItemTypeKeys.NETHERITE_AXE,
+
+            ItemTypeKeys.WOODEN_SHOVEL,
+            ItemTypeKeys.STONE_SHOVEL,
+            ItemTypeKeys.IRON_SHOVEL,
+            ItemTypeKeys.GOLDEN_SHOVEL,
+            ItemTypeKeys.DIAMOND_SHOVEL,
+            ItemTypeKeys.NETHERITE_SHOVEL,
+
+            ItemTypeKeys.WOODEN_HOE,
+            ItemTypeKeys.STONE_HOE,
+            ItemTypeKeys.IRON_HOE,
+            ItemTypeKeys.GOLDEN_HOE,
+            ItemTypeKeys.DIAMOND_HOE,
+            ItemTypeKeys.NETHERITE_HOE,
+
+            ItemTypeKeys.WOODEN_SWORD,
+            ItemTypeKeys.STONE_SWORD,
+            ItemTypeKeys.IRON_SWORD,
+            ItemTypeKeys.GOLDEN_SWORD,
+            ItemTypeKeys.DIAMOND_SWORD,
+            ItemTypeKeys.NETHERITE_SWORD
+        );
     }
 
     @Override
     public int getWeight() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getWeight'");
+        return weight;
     }
-
     @Override
     public boolean isCursed() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isCursed'");
+        return false;
     }
 
     @Override
     public boolean isDiscoverable() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isDiscoverable'");
+        return true;
     }
-
     @Override
     public boolean isTradeable() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isTradeable'");
+        return false;
     }
 
     @Override
     public boolean isTreasure() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isTreasure'");
+        return false;
+    }
+    @Override
+    public @NotNull String translationKey() {
+        return "enchantment." + NAMESPACE + "." + key;
     }
 
     @Override
-    public @NotNull String translationKey() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'translationKey'");
+    public @NotNull EnchantmentTarget getItemTarget() {
+        return EnchantmentTarget.TOOL;
     }
 }

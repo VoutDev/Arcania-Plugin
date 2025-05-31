@@ -15,9 +15,11 @@ public class ConfigManager {
     private List<Double> enrichmentXpMultiplier;
     private double enrichmentK;
 
-    public void reload() {
-        Arcania.getInstance().getLogger().info("Reloading configs");
-        Arcania.getInstance().reloadConfig();
+    public ConfigManager() {
+        this.loadConfig();
+    }
+
+    public void loadConfig() {
         FileConfiguration config = Arcania.getInstance().getConfig();
         
         fixEnchantCheckEnabled = config.getBoolean("utility.fix-enchant-check", false);
@@ -30,6 +32,13 @@ public class ConfigManager {
         
         enrichmentXpMultiplier = config.getDoubleList("enchant.enrichment.xp-multiplier");
         enrichmentK = config.getDouble("enchant.enrichment.k", 10.0);
+    }
+
+    public void reload() {
+        Arcania.getInstance().getLogger().info("Reloading configs");
+        Arcania.getInstance().reloadConfig();
+        this.loadConfig();
+        
     }
 
     // Getters

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class ArcaniaEnchant extends Enchantment {
     public static final String NAMESPACE = "arcania";
-    private final String key;
+    protected final String key;
     protected final String name;
     protected final String description;
     protected final int maxLevel;

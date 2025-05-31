@@ -1,8 +1,7 @@
 package me.vout.paper.arcania.gui;
 
 public enum GuiTypeEnum {
-    MAIN("Arcania Enchants", 27),
-    ENCHANTS("All Enchants");
+    MAIN("Arcania Enchants", 27);
 
 
     private final String displayName;

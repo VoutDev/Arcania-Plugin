@@ -21,10 +21,10 @@ import java.util.Collection;
 
 @NullMarked
 public class ArcaniaCommand implements BasicCommand {
-    private final GuiManager guiManager;
+    // private final GuiManager guiManager;
 
     public ArcaniaCommand(GuiManager guiManager) {
-        this.guiManager = guiManager;
+        // this.guiManager = guiManager;
     }
 
     @Override
@@ -41,17 +41,17 @@ public class ArcaniaCommand implements BasicCommand {
         String subcommand = args[0].toLowerCase();
 
         switch (subcommand) {
-            case "menu":
-                if (sender.hasPermission("arcania.menu")) {
-                    sender.sendMessage(Component.text("You do not have permission!"));
-                    return;
-                }
-                if (!(sender instanceof Player player)) {
-                    sender.sendMessage(Component.text("Only players can use this command."));
-                    return;
-                }
-                guiManager.openGui(player, GuiTypeEnum.MAIN);
-                break;
+            // case "menu":
+            //     if (sender.hasPermission("arcania.menu")) {
+            //         sender.sendMessage(Component.text("You do not have permission!"));
+            //         return;
+            //     }
+            //     if (!(sender instanceof Player player)) {
+            //         sender.sendMessage(Component.text("Only players can use this command."));
+            //         return;
+            //     }
+            //     // guiManager.openGui(player, GuiTypeEnum.MAIN);
+            //     break;
             case "reload":
                 if (!sender.hasPermission("arcania.reload")) {
                     sender.sendMessage(Component.text("You do not have permission!"));
@@ -60,17 +60,17 @@ public class ArcaniaCommand implements BasicCommand {
                 Arcania.getInstance().reloadManagers(Arcania.getInstance().getServer());
                 sender.sendMessage(Component.text("Plugin reloaded!"));
                 break;
-            case "enchants":
-                if (!sender.hasPermission("arcania.menu.enchants")) {
-                    sender.sendMessage(Component.text("You do not have permission!"));  
-                    return;
-                }
-                if (!(sender instanceof Player player)) {
-                    sender.sendMessage(Component.text("Only players can use this command."));
-                    return;
-                }
-                guiManager.openGui(player, GuiTypeEnum.ENCHANTS);
-                break;
+            // case "enchants":
+            //     if (!sender.hasPermission("arcania.menu.enchants")) {
+            //         sender.sendMessage(Component.text("You do not have permission!"));  
+            //         return;
+            //     }
+            //     if (!(sender instanceof Player player)) {
+            //         sender.sendMessage(Component.text("Only players can use this command."));
+            //         return;
+            //     }
+            //     guiManager.openGui(player, GuiTypeEnum.ENCHANTS);
+            //     break;
             default:
                 sender.sendMessage(Component.text("Usage: /arcania [reload|menu|enchants]"));
         }

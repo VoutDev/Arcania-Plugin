@@ -2,8 +2,6 @@ package me.vout.paper.arcania.manager;
 
 import me.vout.paper.arcania.gui.*;
 import me.vout.paper.arcania.gui.base.GuiHolder;
-import me.vout.paper.arcania.gui.enchants.EnchantsFilterEnum;
-import me.vout.paper.arcania.gui.enchants.EnchantsMenu;
 import me.vout.paper.arcania.gui.main.MainMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -33,7 +31,6 @@ public class GuiManager {
     public Inventory getMenuInventory(GuiTypeEnum guiType, UUID uuid) {
         return switch (guiType) {
             case MAIN -> MainMenu.build();
-            case ENCHANTS -> EnchantsMenu.build(guiHistory.get(uuid), EnchantsFilterEnum.ALL);
         };
     }
 

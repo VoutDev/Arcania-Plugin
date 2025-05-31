@@ -3,8 +3,6 @@ package me.vout.paper.arcania.listener;
 import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.gui.GuiHelper;
 import me.vout.paper.arcania.gui.base.GuiHolder;
-import me.vout.paper.arcania.gui.enchants.EnchantsMenuHandler;
-import me.vout.paper.arcania.gui.enchants.EnchantsMenuHolder;
 import me.vout.paper.arcania.gui.main.MainMenuHandler;
 import me.vout.paper.arcania.gui.main.MainMenuHolder;
 import me.vout.paper.arcania.manager.GuiManager;
@@ -48,10 +46,6 @@ public class GuiListener implements Listener {
         else if (topInventoryHolder instanceof MainMenuHolder) {
             if (event.getClick() == ClickType.DOUBLE_CLICK) event.setCancelled(true);
             MainMenuHandler.handler(event, guiManager);
-        }
-        else if (topInventoryHolder instanceof EnchantsMenuHolder) {
-            if (event.getClick() == ClickType.DOUBLE_CLICK) event.setCancelled(true);
-            EnchantsMenuHandler.handler(event, guiManager);
         }
     }
 

@@ -30,7 +30,6 @@ import io.papermc.paper.enchantments.EnchantmentRarity;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
-import io.papermc.paper.registry.keys.tags.ItemTypeTagKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 
@@ -47,7 +46,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
             "Slows attacked entity", 
             2, 
             1, 
-            2,
+            10,
             1,
             3,
             1
@@ -128,7 +127,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
     }
     @Override
     public @NotNull String getTranslationKey() {
-        return "enchantment.arcania.frostbite";
+        return "enchantment." + NAMESPACE + "." + key;
     }
 
     @Override
@@ -173,37 +172,52 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
     
     @Override
     public @NotNull RegistryKeySet<Enchantment> getExclusiveWith() {
-        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, "frostbite")).registryKey());
+        return RegistrySet.keySet(EnchantmentKeys.create(Key.key(NAMESPACE, key)).registryKey());
     }
 
     @Override
     public int getMaxLevel() {
         return maxLevel;
     }
+
     @Override
     public int getMaxModifiedCost(int arg0) {
-        return maxModifiedCost;
+        return switch (arg0) {
+            case 1 -> 15;
+            case 2 -> 30;
+            default -> 0;
+        };
     }
+
     @Override
     public int getMinModifiedCost(int arg0) {
-        return minModifiedCost;
+        return switch (arg0) {
+            case 1 -> 15;
+            case 2 -> 30;
+            default -> 0;
+        };
     }
+
     @Override
     public @Nullable RegistryKeySet<ItemType> getPrimaryItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.NETHERITE_SWORD);
+        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_SWORD, ItemTypeKeys.IRON_SWORD, ItemTypeKeys.GOLDEN_SWORD, ItemTypeKeys.DIAMOND_SWORD, ItemTypeKeys.NETHERITE_SWORD, ItemTypeKeys.BOW, ItemTypeKeys.CROSSBOW);
     }
+
     @Override
     public @NotNull EnchantmentRarity getRarity() {
         return EnchantmentRarity.RARE;
     }
+
     @Override
     public int getStartLevel() {
         return startLevel;
     }
+
     @Override
     public @NotNull RegistryKeySet<ItemType> getSupportedItems() {
-        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.NETHERITE_SWORD);
+        return RegistrySet.keySet(RegistryKey.ITEM, ItemTypeKeys.ENCHANTED_BOOK, ItemTypeKeys.STONE_SWORD, ItemTypeKeys.IRON_SWORD, ItemTypeKeys.GOLDEN_SWORD, ItemTypeKeys.DIAMOND_SWORD, ItemTypeKeys.NETHERITE_SWORD, ItemTypeKeys.BOW, ItemTypeKeys.CROSSBOW);
     }
+
     @Override
     public int getWeight() {
         return weight;
@@ -228,7 +242,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
     }
     @Override
     public @NotNull String translationKey() {
-        return "enchantment.arcania.frostbite";
+        return "enchantment." + NAMESPACE + "." + key;
     }
 
     @Override

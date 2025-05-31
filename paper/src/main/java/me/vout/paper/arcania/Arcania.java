@@ -21,7 +21,7 @@ public final class Arcania extends JavaPlugin {
     private static Arcania instance;
     private static Server server;
 
-    static final ConfigManager configManager = new ConfigManager();
+    private static ConfigManager configManager;
 
     // Fetch the enchantment registry from the registry access
     private static Registry<Enchantment> enchantmentRegistry;
@@ -31,6 +31,7 @@ public final class Arcania extends JavaPlugin {
         getLogger().info("Plugin started!");
         instance = this;
         server = this.getServer();
+        configManager = new ConfigManager();
         saveDefaultConfig();
         reloadManagers(server);
         loadEnchantRegistry();

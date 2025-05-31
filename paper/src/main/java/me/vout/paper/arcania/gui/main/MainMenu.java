@@ -30,7 +30,6 @@ public class MainMenu {
 
         meta.addEnchant(Enchantment.UNBREAKING, 1, true); // Glowing effect
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
-        GuiHelper.setPersistentData(PersistentDataEnum.GUI_REDIRECT.toString(), GuiTypeEnum.ENCHANTS.toString(), meta);
         item.setItemMeta(meta);
         return item;
     }

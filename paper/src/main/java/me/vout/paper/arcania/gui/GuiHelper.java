@@ -1,7 +1,6 @@
 package me.vout.paper.arcania.gui;
 
 import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.gui.enchants.EnchantsFilterEnum;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -31,18 +30,6 @@ public class GuiHelper {
         return null;
     }
 
-    public static EnchantsFilterEnum isEnchantsFilter(ItemStack item) {
-        ItemMeta meta = item.getItemMeta();
-        NamespacedKey key = new NamespacedKey(Arcania.getInstance(),PersistentDataEnum.FILTER.toString());
-        if (meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-            String value = meta.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-            for (EnchantsFilterEnum t: EnchantsFilterEnum.values()) {
-                if (t.toString().equalsIgnoreCase(value))
-                    return t;
-            }
-        }
-        return null;
-    }
 
     public static void setPersistentData(String keyName, String value, ItemMeta meta) {
         NamespacedKey key = new NamespacedKey(Arcania.getInstance(), keyName);

@@ -5,13 +5,19 @@ import me.vout.paper.arcania.enchant.ArcaniaEnchant;
 import me.vout.paper.arcania.manager.ArcaniaEnchantManager;
 import me.vout.paper.arcania.manager.GuiManager;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import io.papermc.paper.plugin.bootstrap.BootstrapContext;
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
+import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.data.EnchantmentRegistryEntry;
 import io.papermc.paper.registry.event.RegistryEvents;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
+import io.papermc.paper.registry.keys.tags.EnchantmentTagKeys;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
@@ -23,49 +29,40 @@ public class ArcaniaBootstrap implements PluginBootstrap {
 
     @Override
     public void bootstrap(BootstrapContext context) {
+
+        LifecycleEventManager<BootstrapContext> lifecycle = context.getLifecycleManager();
         // Register command handler
-        context.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
+        lifecycle.registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             commands.registrar().register("arcania", arcaniaCommand);
         });
 
         // Register enchantment handler - this will be called at the right time by Paper
-        context.getLifecycleManager().registerEventHandler(RegistryEvents.ENCHANTMENT.freeze().newHandler(event -> {
+        lifecycle.registerEventHandler(RegistryEvents.ENCHANTMENT.freeze().newHandler(event -> {
             enchantManager = new ArcaniaEnchantManager();
 
-            ArcaniaEnchant enchant = enchantManager.getEnchants().stream().filter(e -> e.getKey().equals(Key.key("arcania", "frostbite"))).findFirst().orElse(null);
-            if (enchant != null) {
+            // Register all enchantments
+            for (ArcaniaEnchant enchant: enchantManager.getEnchants()) {
                 event.registry().register(
-                    EnchantmentKeys.create(enchant.getKey()),
-                    b -> b.description(Component.text(enchant.getName()))
-                    .supportedItems(enchant.getSupportedItems())
-                    .anvilCost(enchant.getAnvilCost())
-                    .maxLevel(enchant.getMaxLevel())
-                    .weight(enchant.getWeight())
-                    .minimumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMinModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
-                    .maximumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMaxModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
-                    .activeSlots(enchant.getActiveSlotGroups())
+                    EnchantmentKeys.create(Key.key(enchant.getKey().getNamespace(), enchant.getKey().getKey())),
+                    b -> 
+                        b.description(Component.text(enchant.getName()))
+                        .supportedItems(enchant.getSupportedItems())
+                        .anvilCost(enchant.getAnvilCost())
+                        .maxLevel(enchant.getMaxLevel())
+                        .weight(enchant.getWeight())
+                        .minimumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMinModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
+                        .maximumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMaxModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
+                        .activeSlots(enchant.getActiveSlotGroups())
                 );
             }
-            
-            
+        }));
 
-
-
-            // Register all enchantments
-            // for (ArcaniaEnchant enchant: enchantManager.getEnchants()) {
-            //     event.registry().register(
-            //         EnchantmentKeys.create(Key.key(enchant.getKey().getNamespace(), enchant.getKey().getKey())),
-            //         b -> 
-            //             b.description(Component.text(enchant.getName()))
-            //             .supportedItems(enchant.getSupportedItems())
-            //             .anvilCost(enchant.getAnvilCost())
-            //             .maxLevel(enchant.getMaxLevel())
-            //             .weight(enchant.getWeight())
-            //             .minimumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMinModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
-            //             .maximumCost(EnchantmentRegistryEntry.EnchantmentCost.of(enchant.getMaxModifiedCost(enchant.getStartLevel()), enchant.getStartLevel()))
-            //             .activeSlots(enchant.getActiveSlotGroups())
-            //     );
-            // }
+        // add enchants to enchantment table tag
+        lifecycle.registerEventHandler(LifecycleEvents.TAGS.postFlatten(RegistryKey.ENCHANTMENT).newHandler(event -> {
+            event.registrar().addToTag(
+                EnchantmentTagKeys.IN_ENCHANTING_TABLE,
+                enchantManager.getEnchants().stream().map(enchant -> EnchantmentKeys.create(Key.key(enchant.getKey().getNamespace(), enchant.getKey().getKey()))).collect(Collectors.toSet())
+            );
         }));
     }
 
