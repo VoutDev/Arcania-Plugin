@@ -1,10 +1,5 @@
 package me.vout.paper.arcania.enchant.hoe;
 
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.util.ToolHelper;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
-
 import java.util.Set;
 
 import org.bukkit.Material;
@@ -28,6 +23,10 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.util.ToolHelper;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 public class TillerEnchant extends ArcaniaEnchant {
 

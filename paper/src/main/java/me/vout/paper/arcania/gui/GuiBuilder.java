@@ -1,16 +1,15 @@
 package me.vout.paper.arcania.gui;
 
-import me.vout.paper.arcania.gui.base.GuiHolder;
-import net.kyori.adventure.text.format.NamedTextColor;
+import java.util.Deque;
 
 import org.bukkit.Bukkit;
-
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Deque;
+import me.vout.paper.arcania.gui.base.GuiHolder;
+import net.kyori.adventure.text.format.NamedTextColor;
 
 public class GuiBuilder {
     private final Inventory inventory;

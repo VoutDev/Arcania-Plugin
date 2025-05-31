@@ -1,9 +1,7 @@
 package me.vout.paper.arcania.enchant.weapon;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
+import java.util.Random;
+import java.util.Set;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -32,9 +30,10 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-
-import java.util.Random;
-import java.util.Set;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 public class FrostbiteEnchant extends ArcaniaEnchant {
     public static final FrostbiteEnchant INSTANCE = new FrostbiteEnchant();

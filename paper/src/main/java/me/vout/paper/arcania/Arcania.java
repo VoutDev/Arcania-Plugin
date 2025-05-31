@@ -1,17 +1,14 @@
 package me.vout.paper.arcania;
 
 
+import org.bukkit.Registry;
 import org.bukkit.Server;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
-
-import org.bukkit.Registry;
-import org.bukkit.enchantments.Enchantment;
-
-
 import me.vout.paper.arcania.listener.ArcaniaEnchantListener;
 import me.vout.paper.arcania.listener.GuiListener;
 import me.vout.paper.arcania.manager.ConfigManager;

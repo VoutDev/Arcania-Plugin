@@ -1,13 +1,16 @@
 package me.vout.paper.arcania.enchant.pickaxe;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.util.ToolHelper;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -24,11 +27,11 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
-
-import java.util.*;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.util.ToolHelper;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 /**
  * VeinMiner Enchantment

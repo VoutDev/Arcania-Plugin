@@ -1,22 +1,14 @@
 package me.vout.paper.arcania.listener;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.ArcaniaBootstrap;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.enchant.hoe.HarvesterEnchant;
-import me.vout.paper.arcania.enchant.hoe.TillerEnchant;
-import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
-import me.vout.paper.arcania.enchant.weapon.EssenceEnchant;
-import me.vout.paper.arcania.enchant.weapon.FrostbiteEnchant;
-import me.vout.paper.arcania.util.EnchantHelper;
-import me.vout.paper.arcania.util.ItemHelper;
-import me.vout.paper.arcania.util.ToolHelper;
-import net.kyori.adventure.key.Key;
+import java.util.Map;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -28,7 +20,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.Map;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.hoe.HarvesterEnchant;
+import me.vout.paper.arcania.enchant.hoe.TillerEnchant;
+import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
+import me.vout.paper.arcania.enchant.weapon.EssenceEnchant;
+import me.vout.paper.arcania.enchant.weapon.FrostbiteEnchant;
+import me.vout.paper.arcania.util.ItemHelper;
+import me.vout.paper.arcania.util.ToolHelper;
 
 public class ArcaniaEnchantListener implements Listener {
 

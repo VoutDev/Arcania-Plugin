@@ -1,10 +1,11 @@
 package me.vout.paper.arcania.gui;
 
-import me.vout.paper.arcania.Arcania;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+
+import me.vout.paper.arcania.Arcania;
 
 public class GuiHelper {
     public static boolean isBackButton(ItemStack item) {

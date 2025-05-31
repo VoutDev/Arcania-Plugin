@@ -1,15 +1,5 @@
 package me.vout.paper.arcania.enchant.pickaxe;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.ArcaniaBootstrap;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-
-import me.vout.paper.arcania.manager.ConfigManager;
-import me.vout.paper.arcania.util.ItemHelper;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
-
-
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +19,11 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.manager.ConfigManager;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 /**
  * Enrichment Enchantment

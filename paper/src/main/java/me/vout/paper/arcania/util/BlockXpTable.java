@@ -1,10 +1,10 @@
 package me.vout.paper.arcania.util;
 
-import org.bukkit.Material;
-
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.IntSupplier;
+
+import org.bukkit.Material;
 
 public class BlockXpTable {
     private static final Map<Material, IntSupplier> XP_MAP = Map.ofEntries(

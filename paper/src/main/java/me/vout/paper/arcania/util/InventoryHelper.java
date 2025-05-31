@@ -1,9 +1,9 @@
 package me.vout.paper.arcania.util;
 
+import java.util.HashMap;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.HashMap;
 
 public class InventoryHelper {
 

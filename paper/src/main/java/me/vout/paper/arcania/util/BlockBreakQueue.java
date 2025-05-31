@@ -1,6 +1,11 @@
 package me.vout.paper.arcania.util;
 
-import me.vout.paper.arcania.Arcania;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -9,12 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Level;
+import me.vout.paper.arcania.Arcania;
 
 public class BlockBreakQueue {
     private static final ConcurrentHashMap<Player, Queue<BlockBreakData>> playerQueues = new ConcurrentHashMap<>();

@@ -1,22 +1,17 @@
 package me.vout.paper.arcania.command;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.gui.GuiTypeEnum;
-import me.vout.paper.arcania.manager.GuiManager;
-import net.kyori.adventure.text.Component;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
-
 import org.jspecify.annotations.NullMarked;
 import org.jspecify.annotations.Nullable;
 
 import io.papermc.paper.command.brigadier.BasicCommand;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
-
-import java.util.Arrays;
-import java.util.Collection;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.manager.GuiManager;
+import net.kyori.adventure.text.Component;
 
 
 @NullMarked

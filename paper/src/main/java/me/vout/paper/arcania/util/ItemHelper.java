@@ -1,11 +1,14 @@
 package me.vout.paper.arcania.util;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.gui.PersistentDataEnum;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -14,16 +17,8 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-
-
-
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.gui.PersistentDataEnum;
 
 public class ItemHelper {
 

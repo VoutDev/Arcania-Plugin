@@ -1,9 +1,7 @@
 package me.vout.paper.arcania.gui.main;
 
-import me.vout.paper.arcania.gui.GuiBuilder;
-import me.vout.paper.arcania.gui.GuiHelper;
-import me.vout.paper.arcania.gui.GuiTypeEnum;
-import me.vout.paper.arcania.gui.PersistentDataEnum;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
@@ -11,7 +9,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.List;
+import me.vout.paper.arcania.gui.GuiBuilder;
+import me.vout.paper.arcania.gui.GuiTypeEnum;
 
 public class MainMenu {
     public static Inventory build() {

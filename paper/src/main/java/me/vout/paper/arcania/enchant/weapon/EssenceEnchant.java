@@ -1,11 +1,8 @@
 package me.vout.paper.arcania.enchant.weapon;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
-import me.vout.paper.arcania.manager.ConfigManager;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -25,10 +22,12 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
+import me.vout.paper.arcania.manager.ConfigManager;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 public class EssenceEnchant extends ArcaniaEnchant {
     public static final EssenceEnchant INSTANCE = new EssenceEnchant();

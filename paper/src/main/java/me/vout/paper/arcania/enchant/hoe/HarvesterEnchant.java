@@ -1,22 +1,16 @@
 package me.vout.paper.arcania.enchant.hoe;
 
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.ArcaniaBootstrap;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-// import me.vout.paper.arcania.enchant.EnchantRarityEnum;
-import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
-import me.vout.paper.arcania.util.InventoryHelper;
-import me.vout.paper.arcania.util.ItemHelper;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -32,10 +26,13 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import me.vout.paper.arcania.Arcania;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+// import me.vout.paper.arcania.enchant.EnchantRarityEnum;
+import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
+import me.vout.paper.arcania.util.InventoryHelper;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 
 public class HarvesterEnchant extends ArcaniaEnchant {
     public  static  final HarvesterEnchant INSTANCE = new HarvesterEnchant();

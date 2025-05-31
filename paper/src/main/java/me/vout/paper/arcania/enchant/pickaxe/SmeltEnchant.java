@@ -19,7 +19,6 @@ import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
 public class SmeltEnchant extends ArcaniaEnchant {

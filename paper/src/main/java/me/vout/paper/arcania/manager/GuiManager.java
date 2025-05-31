@@ -1,12 +1,17 @@
 package me.vout.paper.arcania.manager;
 
-import me.vout.paper.arcania.gui.*;
-import me.vout.paper.arcania.gui.base.GuiHolder;
-import me.vout.paper.arcania.gui.main.MainMenu;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import java.util.*;
+import me.vout.paper.arcania.gui.GuiTypeEnum;
+import me.vout.paper.arcania.gui.base.GuiHolder;
+import me.vout.paper.arcania.gui.main.MainMenu;
 
 public class GuiManager {
 

@@ -1,8 +1,9 @@
 package me.vout.paper.arcania.gui.main;
 
+import org.bukkit.inventory.Inventory;
+
 import me.vout.paper.arcania.gui.GuiTypeEnum;
 import me.vout.paper.arcania.gui.base.GuiHolder;
-import org.bukkit.inventory.Inventory;
 
 public class MainMenuHolder implements GuiHolder {
 
