@@ -2,10 +2,13 @@ package me.vout.paper.arcania.listener;
 
 import java.util.Map;
 
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
 import me.vout.paper.arcania.enchant.bow.BlinkEnchant;
+import me.vout.paper.arcania.util.InventoryHelper;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
+import org.bukkit.block.Container;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -19,6 +22,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.BlockInventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -36,15 +40,24 @@ public class ArcaniaEnchantListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if (event.isCancelled()) return;
+        boolean useVanillaBreak = false;
         Player player = event.getPlayer();
         ItemStack item = player.getInventory().getItemInMainHand();
         if (item.getType().isAir() ||  !ItemHelper.isBlockBreakTool(item.getType())) return;
 
         Map<Enchantment, Integer> activeEnchants = item.getEnchantments();
 
-        if (activeEnchants.isEmpty()) return;
+        if (activeEnchants.keySet().stream()
+                .noneMatch(enchantment -> enchantment.getKey().getNamespace().equals(ArcaniaEnchant.NAMESPACE))) return;
 
-        ToolHelper.customBreakBlock(player, event, item, activeEnchants);
+        if (event.getBlock().getState() instanceof Container container)
+            useVanillaBreak = InventoryHelper.containerBlockBreak(event.getBlock(), container, player, activeEnchants);
+        else if (activeEnchants.containsKey(Arcania.getEnchantRegistry().get(MagnetEnchant.INSTANCE.getKey())) &&
+                event.getBlock().getState() instanceof BlockInventoryHolder blockInventoryHolder) // for Chiseled Bookshelf
+            useVanillaBreak = InventoryHelper.processContainerInventory(player, blockInventoryHolder.getInventory());
+
+        if (!useVanillaBreak)
+            ToolHelper.customBreakBlock(player, event, item, activeEnchants);
     }
 
     @EventHandler
