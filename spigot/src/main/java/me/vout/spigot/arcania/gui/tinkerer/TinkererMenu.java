@@ -1,7 +1,7 @@
 package me.vout.spigot.arcania.gui.tinkerer;
 
-import me.vout.spigot.arcania.gui.GuiBuilder;
-import me.vout.spigot.arcania.gui.GuiTypeEnum;
+import me.vout.core.arcania.gui.GuiBuilder;
+import me.vout.core.arcania.gui.GuiTypeEnum;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

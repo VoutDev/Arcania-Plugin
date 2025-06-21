@@ -1,9 +1,11 @@
 package me.vout.spigot.arcania.gui.disenchanter;
 
+import de.tr7zw.nbtapi.NBT;
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
 import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
 import me.vout.spigot.arcania.util.EnchantHelper;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
@@ -14,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class DisenchanterMenuHandler {
 
@@ -50,7 +53,7 @@ public class DisenchanterMenuHandler {
             } // give player output and remove input and output items
             else if (clickedSlot == DisenchanterMenuHolder.OUTPUT_SLOT &&
                     slotItem != null) {
-                Map<ArcaniaEnchant, Integer> enchants = EnchantHelper.getItemEnchants(disenchanterInventory.getItem(DisenchanterMenuHolder.INPUT_SLOT));
+                Map<NamespacedKey, Integer> enchants = EnchantHelper.getItemEnchants(slotItem);
                 int xp = getXpForEnchants(enchants);
                 if (event.isShiftClick()) {
                     HashMap<Integer, ItemStack> items = player.getInventory().addItem(slotItem.clone());
@@ -90,22 +93,37 @@ public class DisenchanterMenuHandler {
     private static ItemStack getOutputItem(ItemStack inputItem) {
         if (inputItem == null || inputItem.getType().isAir()) return null;
 
-        Map<ArcaniaEnchant, Integer> enchants = EnchantHelper.getItemEnchants(inputItem);
+        Map<NamespacedKey, Integer> enchants = EnchantHelper.getItemEnchants(inputItem);
         if (enchants.isEmpty()) return null;
         if (inputItem.getType() == Material.ENCHANTED_BOOK) // otherwise returns special enchanted book
             return new ItemStack(Material.BOOK);
         ItemStack outputItem = inputItem.clone();
+        NBT.modify(outputItem, nbt -> {
+            // Clears existing Arcania section and enchants
+            var arcaniaCompound = nbt.getCompound("arcania");
+            // Only proceed if the 'arcania' compound exists
+            if (arcaniaCompound != null) {
+                // Remove the 'enchants' compound directly from 'arcania' compound
+                arcaniaCompound.removeKey("enchants");
+
+                // Now, check if the 'arcania' compound itself is empty after this removal
+                if (arcaniaCompound.getKeys().isEmpty()) {
+                    // If 'arcania' is empty, remove it from the item's main NBT
+                    nbt.removeKey("arcania");
+                }
+            }
+        });
         ItemMeta outputMeta = outputItem.getItemMeta();
-        outputMeta.setLore(null);
+        Objects.requireNonNull(outputMeta).setLore(null);
         outputItem.setItemMeta(outputMeta);
         return outputItem;
     }
 
-    private static int getXpForEnchants(Map<ArcaniaEnchant, Integer> enchants) {
+    private static int getXpForEnchants(Map<NamespacedKey, Integer> enchants) {
         if (enchants.isEmpty()) return 0;
         int total = 0;
-        for (Map.Entry<ArcaniaEnchant, Integer> entry : enchants.entrySet()) {
-            ArcaniaEnchant enchant = entry.getKey();
+        for (Map.Entry<NamespacedKey, Integer> entry : enchants.entrySet()) {
+            ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(entry.getKey());
             int level = entry.getValue();
 
             boolean isTreasure = enchant.getRarity() == EnchantRarityEnum.LEGENDARY

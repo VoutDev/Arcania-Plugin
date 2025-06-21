@@ -1,7 +1,15 @@
 package me.vout.paper.arcania.enchant.pickaxe;
 
-import java.util.Set;
-
+import io.papermc.paper.enchantments.EnchantmentRarity;
+import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.keys.EnchantmentKeys;
+import io.papermc.paper.registry.keys.ItemTypeKeys;
+import io.papermc.paper.registry.set.RegistryKeySet;
+import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
+import net.kyori.adventure.text.Component;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityCategory;
@@ -12,24 +20,17 @@ import org.bukkit.inventory.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import io.papermc.paper.enchantments.EnchantmentRarity;
-import io.papermc.paper.registry.RegistryKey;
-import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
-import io.papermc.paper.registry.set.RegistryKeySet;
-import io.papermc.paper.registry.set.RegistrySet;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import net.kyori.adventure.text.Component;
+import java.util.Set;
 
 public class SmeltEnchant extends ArcaniaEnchant {
     public static final SmeltEnchant INSTANCE = new SmeltEnchant();
     private SmeltEnchant() {
         super("Smelt",
-            "smelt",
+                ArcaniaEnchantType.SMELT.getKeyName(),
             "Instantly smelt the block into it's smelting result",
             1,
             1,
-            5,
+                EnchantRarityEnum.ULTRA.getNumericValue(),
             10,
             15,
             1

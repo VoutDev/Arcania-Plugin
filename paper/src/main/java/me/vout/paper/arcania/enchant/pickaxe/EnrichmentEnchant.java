@@ -1,8 +1,16 @@
 package me.vout.paper.arcania.enchant.pickaxe;
 
-import java.util.List;
-import java.util.Set;
-
+import io.papermc.paper.enchantments.EnchantmentRarity;
+import io.papermc.paper.registry.RegistryKey;
+import io.papermc.paper.registry.keys.EnchantmentKeys;
+import io.papermc.paper.registry.keys.ItemTypeKeys;
+import io.papermc.paper.registry.set.RegistryKeySet;
+import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
+import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
+import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityCategory;
@@ -13,17 +21,7 @@ import org.bukkit.inventory.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import io.papermc.paper.enchantments.EnchantmentRarity;
-import io.papermc.paper.registry.RegistryKey;
-import io.papermc.paper.registry.keys.EnchantmentKeys;
-import io.papermc.paper.registry.keys.ItemTypeKeys;
-import io.papermc.paper.registry.set.RegistryKeySet;
-import io.papermc.paper.registry.set.RegistrySet;
-import me.vout.paper.arcania.Arcania;
-import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.manager.ConfigManager;
-import net.kyori.adventure.key.Key;
-import net.kyori.adventure.text.Component;
+import java.util.Set;
 
 /**
  * Enrichment Enchantment
@@ -65,28 +63,15 @@ public class EnrichmentEnchant extends ArcaniaEnchant {
 
     private EnrichmentEnchant() {
         super("Enrichment",
-                "enrichment",
+                ArcaniaEnchantType.ENRICHMENT.getKeyName(),
                 "Increase xp dropped by ores. Effects are applied after smelting.",
                 3,
                 1,
-                3,
+                EnchantRarityEnum.RARE.getNumericValue(),
                 10,
                 15,
                 1
         );
-    }
-
-    public static float getScaledXP(float baseXP, int level) {
-        ConfigManager configManager = Arcania.getConfigManager();
-        double k = configManager.getEssenceK();
-        List<Double> multipliers = configManager.getEssenceXpMultiplier();
-
-        if (baseXP <= 5) {
-            return (float) (baseXP * (1 + multipliers.get(level - 1)));
-        } else {
-            double bonus = baseXP * multipliers.get(level - 1) * (k / (baseXP + k));
-            return (float) (baseXP + bonus);
-        }
     }
 
     @Override

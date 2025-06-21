@@ -1,6 +1,7 @@
 package me.vout.spigot.arcania.enchant;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 
 import java.util.function.Predicate;
@@ -11,12 +12,20 @@ public abstract class ArcaniaEnchant {
     private final int weight;
     private final String description;
     private final EnchantRarityEnum rarity;
-    public static final String KEY = "arcania_enchants";
+    public final NamespacedKey KEY;
     private final Predicate<Material> canApplyPredicate;
     private final int max;
 
-    public ArcaniaEnchant(String name, String description, EnchantRarityEnum rarity, int max, double chance, int weight, Predicate<Material> canApplyPredicate) {
+    public ArcaniaEnchant(String name,
+                          NamespacedKey key,
+                          String description,
+                          EnchantRarityEnum rarity,
+                          int max,
+                          double chance,
+                          int weight,
+                          Predicate<Material> canApplyPredicate) {
         this.name = name;
+        this.KEY = key;
         this.description = description;
         this.rarity = rarity;
         this.max = max;

@@ -1,7 +1,7 @@
 package me.vout.spigot.arcania.manager;
 
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.bow.BlinkEnchantment;
+import me.vout.spigot.arcania.enchant.bow.BlinkEnchant;
 import me.vout.spigot.arcania.enchant.hoe.HarvesterEnchant;
 import me.vout.spigot.arcania.enchant.hoe.TillerEnchant;
 import me.vout.spigot.arcania.enchant.pickaxe.EnrichmentEnchant;
@@ -12,12 +12,13 @@ import me.vout.spigot.arcania.enchant.tool.ProsperityEnchant;
 import me.vout.spigot.arcania.enchant.tool.SmeltEnchant;
 import me.vout.spigot.arcania.enchant.weapon.EssenceEnchant;
 import me.vout.spigot.arcania.enchant.weapon.FrostbiteEnchant;
+import org.bukkit.NamespacedKey;
 
 import java.util.*;
 
 public class ArcaniaEnchantManager {
     private final List<ArcaniaEnchant> enchants = new ArrayList<>();
-    public final Map<String, ArcaniaEnchant> enchantMap = new HashMap<>();
+    public final Map<NamespacedKey, ArcaniaEnchant> enchantMap = new HashMap<>();
 
     public ArcaniaEnchantManager() {
         enchantInit();
@@ -32,7 +33,7 @@ public class ArcaniaEnchantManager {
         enchants.add(QuarryEnchant.INSTANCE);
         enchants.add(TillerEnchant.INSTANCE);
         enchants.add(ProsperityEnchant.INSTANCE);
-        enchants.add(BlinkEnchantment.INSTANCE);
+        enchants.add(BlinkEnchant.INSTANCE);
         enchants.add(EnrichmentEnchant.INSTANCE);
         enchants.add(HarvesterEnchant.INSTANCE);
         enchants.add(FrostbiteEnchant.INSTANCE);
@@ -44,7 +45,7 @@ public class ArcaniaEnchantManager {
 
     private void buildEnchantMap() {
         for (ArcaniaEnchant enchant : enchants) {
-            enchantMap.put(enchant.getName(), enchant);
+            enchantMap.put(enchant.KEY, enchant);
         }
     }
 }

@@ -1,7 +1,5 @@
 package me.vout.paper.arcania;
 
-import java.util.stream.Collectors;
-
 import io.papermc.paper.plugin.bootstrap.BootstrapContext;
 import io.papermc.paper.plugin.bootstrap.PluginBootstrap;
 import io.papermc.paper.plugin.bootstrap.PluginProviderContext;
@@ -14,14 +12,14 @@ import io.papermc.paper.registry.keys.tags.EnchantmentTagKeys;
 import me.vout.paper.arcania.command.ArcaniaCommand;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
 import me.vout.paper.arcania.manager.ArcaniaEnchantManager;
-import me.vout.paper.arcania.manager.GuiManager;
 import net.kyori.adventure.key.Key;
 
+import java.util.stream.Collectors;
+
 public class ArcaniaBootstrap implements PluginBootstrap {
-    private static final GuiManager guiManager = new GuiManager();
     private static ArcaniaEnchantManager enchantManager;
 
-    private final ArcaniaCommand arcaniaCommand = new ArcaniaCommand(guiManager);
+    private final ArcaniaCommand arcaniaCommand = new ArcaniaCommand();
 
     @Override
     public void bootstrap(BootstrapContext context) {
@@ -61,9 +59,4 @@ public class ArcaniaBootstrap implements PluginBootstrap {
     public static ArcaniaEnchantManager getEnchantManager() {
         return enchantManager;
     }
-
-    public static GuiManager getGuiManager() {
-        return guiManager;
-    }
-
 }

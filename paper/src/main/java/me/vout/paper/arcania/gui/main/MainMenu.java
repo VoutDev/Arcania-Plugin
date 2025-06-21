@@ -1,7 +1,10 @@
 package me.vout.paper.arcania.gui.main;
 
-import java.util.List;
-
+import me.vout.core.arcania.gui.GuiBuilder;
+import me.vout.core.arcania.gui.GuiTypeEnum;
+import me.vout.core.arcania.gui.main.MainMenuHolder;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
@@ -9,8 +12,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import me.vout.paper.arcania.gui.GuiBuilder;
-import me.vout.paper.arcania.gui.GuiTypeEnum;
+import java.util.List;
 
 public class MainMenu {
     public static Inventory build() {
@@ -24,8 +26,8 @@ public class MainMenu {
     private static ItemStack getShowEnchantsItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("§bShow Enchants");
-        meta.setLore(List.of("§7Click to show all enchants"));
+        meta.customName(Component.text("Show Enchants", NamedTextColor.AQUA));
+        meta.lore(List.of(Component.text("Click to show all enchants", NamedTextColor.GRAY)));
 
         meta.addEnchant(Enchantment.UNBREAKING, 1, true); // Glowing effect
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);

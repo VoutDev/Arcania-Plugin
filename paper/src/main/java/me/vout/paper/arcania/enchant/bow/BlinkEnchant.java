@@ -6,17 +6,15 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ItemType;
@@ -30,25 +28,15 @@ public class BlinkEnchant extends ArcaniaEnchant {
 
     private BlinkEnchant() {
         super("Blink",
-                "blink",
+                ArcaniaEnchantType.BLINK.getKeyName(),
                 "Shoot an ender pearl for further range",
                 1,
                 1,
-                4,
+                EnchantRarityEnum.LEGENDARY.getNumericValue(),
                 10,
                 15,
                 1
         );
-    }
-
-    public static void onProc(Player player, EntityShootBowEvent event, ItemStack offhand) {
-        event.setCancelled(true);
-        EnderPearl pearl = player.launchProjectile(EnderPearl.class);
-        pearl.setVelocity(event.getProjectile().getVelocity());
-
-        offhand.setAmount(offhand.getAmount() - 1);
-        player.getInventory().setItemInOffHand(offhand);
-        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_PEARL_THROW, 0.4f, 1.0f);
     }
 
     @Override

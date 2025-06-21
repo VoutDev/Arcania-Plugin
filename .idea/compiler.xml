@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Arcania-Spigot" />
         <module name="Arcania-Paper" />
+        <module name="Arcania-Core" />
       </profile>
     </annotationProcessing>
   </component>

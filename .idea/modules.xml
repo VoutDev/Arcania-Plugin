@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Arcania.iml" filepath="$PROJECT_DIR$/.idea/modules/Arcania.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/Arcania-Core.iml" filepath="$PROJECT_DIR$/core/Arcania-Core.iml" />
       <module fileurl="file://$PROJECT_DIR$/paper/Arcania-Paper.iml" filepath="$PROJECT_DIR$/paper/Arcania-Paper.iml" />
       <module fileurl="file://$PROJECT_DIR$/spigot/Arcania-Spigot.iml" filepath="$PROJECT_DIR$/spigot/Arcania-Spigot.iml" />
     </modules>

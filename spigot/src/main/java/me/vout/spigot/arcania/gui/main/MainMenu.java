@@ -1,9 +1,10 @@
 package me.vout.spigot.arcania.gui.main;
 
-import me.vout.spigot.arcania.gui.GuiBuilder;
+import me.vout.core.arcania.gui.GuiBuilder;
+import me.vout.core.arcania.gui.GuiTypeEnum;
+import me.vout.core.arcania.gui.PersistentDataEnum;
+import me.vout.core.arcania.gui.main.MainMenuHolder;
 import me.vout.spigot.arcania.gui.GuiHelper;
-import me.vout.spigot.arcania.gui.GuiTypeEnum;
-import me.vout.spigot.arcania.gui.PersistentDataEnum;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
@@ -28,6 +29,7 @@ public class MainMenu {
     private static ItemStack getShowEnchantsItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName("§bShow Enchants");
         meta.setLore(List.of("§7Click to show all enchants"));
 
@@ -41,6 +43,7 @@ public class MainMenu {
     private static ItemStack getEnchantsItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName("§bGet Enchant");
         meta.setLore(List.of("§7Click to roll for enchants"));
         meta.addEnchant(Enchantment.UNBREAKING, 1, true); // Glowing effect
@@ -53,6 +56,7 @@ public class MainMenu {
     private static ItemStack getTinkererItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName("§bTinkerer");
         meta.setLore(List.of("§7Click to modify enchants"));
         meta.addEnchant(Enchantment.UNBREAKING, 1, true); // Glowing effect
@@ -65,6 +69,7 @@ public class MainMenu {
     private static ItemStack getDisenchanterItem(Material material) {
         ItemStack item = new ItemStack(material);
         ItemMeta meta = item.getItemMeta();
+        assert meta != null;
         meta.setDisplayName("§bDisenchanter");
         meta.setLore(List.of("§7Click to disenchant"));
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);

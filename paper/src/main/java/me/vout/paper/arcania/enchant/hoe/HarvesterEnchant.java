@@ -1,19 +1,13 @@
 package me.vout.paper.arcania.enchant.hoe;
 
-import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
-import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.block.data.Ageable;
-import org.bukkit.block.data.BlockData;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.EntityCategory;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ItemType;
@@ -26,11 +20,7 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-import me.vout.paper.arcania.Arcania;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-// import me.vout.paper.arcania.enchant.EnchantRarityEnum;
-import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
-import me.vout.paper.arcania.util.InventoryHelper;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 
@@ -38,45 +28,15 @@ public class HarvesterEnchant extends ArcaniaEnchant {
     public  static  final HarvesterEnchant INSTANCE = new HarvesterEnchant();
     private HarvesterEnchant() {
         super("Harvester",
-                "harvester",
+                ArcaniaEnchantType.HARVESTER.getKeyName(),
                 "Right click to collect and replant crop",
                 1,
                 1,
-                4,
+                EnchantRarityEnum.COMMON.getNumericValue(),
                 10,
                 15,
                 1
         );
-    }
-
-    public static void onProc(Player player, Block crop, ItemStack hoe) {
-        if (crop.getBlockData() instanceof Ageable ageable) {
-            if (ageable.getAge() != ageable.getMaximumAge()) return;
-            Collection<ItemStack> drops = crop.getDrops(hoe);
-
-            Map<Enchantment, Integer> enchants = hoe.getEnchantments();
-            Enchantment magnetEnchant = Arcania.getEnchantRegistry().get(MagnetEnchant.INSTANCE.getKey());
-            boolean hasMagnet = enchants.containsKey(magnetEnchant);
-            if (hasMagnet)
-                InventoryHelper.giveOrDrop(player, drops.toArray(new ItemStack[0]));
-
-            else {
-                World world = crop.getWorld();
-                for (ItemStack drop : drops) {
-                    world.dropItemNaturally(crop.getLocation().add(0.5, 0.5, 0.5), drop);
-                }
-            }
-            ageable.setAge(0);
-            crop.setBlockData((BlockData) ageable);
-        }
-    }
-
-    public static boolean isCrop(Material mat) {
-        return mat == Material.WHEAT
-                || mat == Material.CARROTS
-                || mat == Material.POTATOES
-                || mat == Material.BEETROOTS
-                || mat == Material.NETHER_WART;
     }
 
     @Override

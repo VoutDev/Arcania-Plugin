@@ -5,6 +5,7 @@ import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
 import me.vout.spigot.arcania.util.EnchantHelper;
 import me.vout.spigot.arcania.util.ItemHelper;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -100,30 +101,33 @@ public class TinkererMenuHandler {
     }
 
     private static ItemStack buildOutputItem(ItemStack input1, ItemStack input2) {
-        if ((ItemHelper.isArmor(input1.getType()) || ItemHelper.isToolExtended(input1.getType())) &&
+        if ((me.vout.core.arcania.util.ItemHelper.isArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input1.getType())) &&
         input2.getType() == Material.ENCHANTED_BOOK) {
             if (ItemHelper.isArcaniaEnchant(input2)) {
-                Map<ArcaniaEnchant, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
-                Map<ArcaniaEnchant, Integer> enchantBookMap = EnchantHelper.getItemEnchants(input2);
+                Map<NamespacedKey, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
+                Map<NamespacedKey, Integer> enchantBookMap = EnchantHelper.getItemEnchants(input2);
 
                 Map<ArcaniaEnchant, Integer> enchantsToAdd = new HashMap<>();
 
                 ItemStack outputItem = input1.clone();
                 boolean canApplyAny = false;
 
-                for (ArcaniaEnchant enchant: enchantBookMap.keySet()) {
-                    if (!enchant.canApplyTo(input1.getType()) || enchantItemMap.keySet().stream().anyMatch(e -> !e.canApplyWith(enchant))) continue;
+                for (NamespacedKey key: enchantBookMap.keySet()) {
+                    ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(key);
+                    if (!enchant.canApplyTo(input1.getType()) ||
+                            enchantItemMap.keySet().stream().map(EnchantHelper::namespaceToEnchant).anyMatch(e -> !e.canApplyWith(enchant))) continue;
                     canApplyAny = true;
-                    enchantsToAdd.put(enchant, enchantBookMap.get(enchant));
+                    enchantsToAdd.put(enchant, enchantBookMap.get(key));
                 }
 
                 if (canApplyAny) {
                     // Merges duplicate enchants to use highest level
-                    for (Map.Entry<ArcaniaEnchant, Integer> entry: enchantItemMap.entrySet()) {
-                        enchantsToAdd.merge(entry.getKey(), entry.getValue(), (oldLevel, newLevel) -> {
+                    for (Map.Entry<NamespacedKey, Integer> entry: enchantItemMap.entrySet()) {
+                        ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(entry.getKey());
+                        enchantsToAdd.merge(enchant, entry.getValue(), (oldLevel, newLevel) -> {
                             if (oldLevel.equals(newLevel)) {
                                 // Both levels are the same, so increment (up to max)
-                                int max = entry.getKey().getMaxLevel();
+                                int max = enchant.getMaxLevel();
                                 return Math.min(oldLevel + 1, max);
                             } else {
                                 // Levels are different, use the higher one
@@ -137,24 +141,26 @@ public class TinkererMenuHandler {
             }
         } // 2 valid non enchanted book items
         else if (input1.getType().equals(input2.getType()) &&
-                (ItemHelper.isArmor(input1.getType()) || ItemHelper.isToolExtended(input1.getType())) &&
-                (ItemHelper.isArmor(input2.getType()) || ItemHelper.isToolExtended(input2.getType()))) {
-            Map<ArcaniaEnchant, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
-            Map<ArcaniaEnchant, Integer> enchantItem2Map = EnchantHelper.getItemEnchants(input2);
+                (me.vout.core.arcania.util.ItemHelper.isArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input1.getType())) &&
+                (me.vout.core.arcania.util.ItemHelper.isArmor(input2.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input2.getType()))) {
+            Map<NamespacedKey, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
+            Map<NamespacedKey, Integer> enchantItem2Map = EnchantHelper.getItemEnchants(input2);
             if (enchantItemMap.isEmpty() && enchantItem2Map.isEmpty())  return null;
 
             Map<ArcaniaEnchant, Integer> enchantsToAdd = new HashMap<>();
             ItemStack outputItem = input1.clone();
 
-            for (ArcaniaEnchant enchant: enchantItemMap.keySet()) {
-                enchantsToAdd.put(enchant, enchantItemMap.get(enchant));
+            for (NamespacedKey key: enchantItemMap.keySet()) {
+                ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(key);
+                enchantsToAdd.put(enchant, enchantItemMap.get(key));
             }
 
-            for (Map.Entry<ArcaniaEnchant, Integer> entry: enchantItem2Map.entrySet()) {
-                enchantsToAdd.merge(entry.getKey(), entry.getValue(), (oldLevel, newLevel) -> {
+            for (Map.Entry<NamespacedKey, Integer> entry: enchantItem2Map.entrySet()) {
+                ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(entry.getKey());
+                enchantsToAdd.merge(enchant, entry.getValue(), (oldLevel, newLevel) -> {
                     if (oldLevel.equals(newLevel)) {
                         // Both levels are the same, so increment (up to max)
-                        int max = entry.getKey().getMaxLevel();
+                        int max = enchant.getMaxLevel();
                         return Math.min(oldLevel + 1, max);
                     } else {
                         // Levels are different, use the higher one
@@ -169,27 +175,29 @@ public class TinkererMenuHandler {
         else if (input1.getType() == Material.ENCHANTED_BOOK &&
                 input2.getType() == Material.ENCHANTED_BOOK) {
             if (ItemHelper.isArcaniaEnchant(input1) && ItemHelper.isArcaniaEnchant(input2)) {
-                Map<ArcaniaEnchant, Integer> enchantBook1Map = EnchantHelper.getItemEnchants(input1);
-                Map<ArcaniaEnchant, Integer> enchantBook2Map = EnchantHelper.getItemEnchants(input2);
+                Map<NamespacedKey, Integer> enchantBook1Map = EnchantHelper.getItemEnchants(input1);
+                Map<NamespacedKey, Integer> enchantBook2Map = EnchantHelper.getItemEnchants(input2);
                 Map<ArcaniaEnchant, Integer> enchantsToAdd = new HashMap<>();
 
                 ItemStack outputItem = input1.clone();
                 boolean canApplyAny = false;
 
-                for (ArcaniaEnchant enchant: enchantBook2Map.keySet()) {
-                    if (enchantBook1Map.keySet().stream().anyMatch(e -> !e.canApplyWith(enchant))) continue;
+                for (NamespacedKey key: enchantBook2Map.keySet()) {
+                    ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(key);
+                    if (enchantBook1Map.keySet().stream().map(EnchantHelper::namespaceToEnchant).anyMatch(e -> !e.canApplyWith(enchant))) continue;
 
                     canApplyAny = true;
-                    enchantsToAdd.put(enchant, enchantBook2Map.get(enchant));
+                    enchantsToAdd.put(enchant, enchantBook2Map.get(key));
                 }
 
                 if (canApplyAny) {
                     // Merges duplicate enchants to use highest level
-                    for (Map.Entry<ArcaniaEnchant, Integer> entry: enchantBook1Map.entrySet()) {
-                        enchantsToAdd.merge(entry.getKey(), entry.getValue(), (oldLevel, newLevel) -> {
+                    for (Map.Entry<NamespacedKey, Integer> entry: enchantBook1Map.entrySet()) {
+                        ArcaniaEnchant enchant = EnchantHelper.namespaceToEnchant(entry.getKey());
+                        enchantsToAdd.merge(enchant, entry.getValue(), (oldLevel, newLevel) -> {
                             if (oldLevel.equals(newLevel)) {
                                 // Both levels are the same, so increment (up to max)
-                                int max = entry.getKey().getMaxLevel();
+                                int max = enchant.getMaxLevel();
                                 return Math.min(oldLevel + 1, max);
                             } else {
                                 // Levels are different, use the higher one
@@ -206,9 +214,11 @@ public class TinkererMenuHandler {
 
     private static ItemStack setOutputData(ItemStack outputItem, Map<ArcaniaEnchant, Integer> enchantsToAdd) {
         // sorts enchants by rarity, by name and by level
-        List<Map.Entry<ArcaniaEnchant, Integer>> sortedEnchants = new ArrayList<>(enchantsToAdd.entrySet());
+        List<Map.Entry<ArcaniaEnchant, Integer>> sortedEnchants = new ArrayList<>(enchantsToAdd.entrySet().stream()
+                .map(entry -> Map.entry(entry.getKey(), entry.getValue()))
+                .toList());
         sortedEnchants.sort(Comparator
-                .comparing((Map.Entry<ArcaniaEnchant, Integer> e) -> e.getKey().getRarity().getCost())
+                .comparing((Map.Entry<ArcaniaEnchant, Integer> e) -> e.getKey().getRarity().getNumericValue())
                 .thenComparing(e -> e.getKey().getName(), String.CASE_INSENSITIVE_ORDER));
 
         NBT.modify(outputItem, nbt -> {
@@ -225,7 +235,8 @@ public class TinkererMenuHandler {
             for (Map.Entry<ArcaniaEnchant, Integer> entry : sortedEnchants) {
                 ArcaniaEnchant enchant = entry.getKey();
                 int level = entry.getValue();
-                nbtCompound.setString(enchant.getName(), String.valueOf(level));
+                //todo This needs to be handled better, again Vein Miner breaks
+                nbtCompound.setString(enchant.getName().replace(' ', '_'), String.valueOf(level));
                 //Or do nbtCompound.setInteger if you prefer it to be a integer
             }
         });
@@ -238,7 +249,7 @@ public class TinkererMenuHandler {
         for (Map.Entry<ArcaniaEnchant, Integer> entry : sortedEnchants) {
             ArcaniaEnchant enchant = entry.getKey();
             int level = entry.getValue();
-            lore.add(ItemHelper.colorizeHex(String.format("%s%s %s",
+            lore.add(me.vout.core.arcania.util.ItemHelper.colorizeHex(String.format("%s%s %s",
                     enchant.getRarity().getColor(),
                     enchant.getName(),
                     ItemHelper.intToRoman(level)

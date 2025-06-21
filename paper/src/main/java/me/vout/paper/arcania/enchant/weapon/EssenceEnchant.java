@@ -1,79 +1,41 @@
 package me.vout.paper.arcania.enchant.weapon;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
-import org.bukkit.entity.EntityCategory;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.inventory.EquipmentSlotGroup;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ItemType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 import io.papermc.paper.enchantments.EnchantmentRarity;
 import io.papermc.paper.registry.RegistryKey;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
-import me.vout.paper.arcania.Arcania;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
-import me.vout.paper.arcania.enchant.tool.MagnetEnchant;
-import me.vout.paper.arcania.manager.ConfigManager;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.enchantments.EnchantmentTarget;
+import org.bukkit.entity.EntityCategory;
+import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ItemType;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Set;
 
 public class EssenceEnchant extends ArcaniaEnchant {
     public static final EssenceEnchant INSTANCE = new EssenceEnchant();
     private EssenceEnchant() {
         super("Essence",
-                "essence",
+                ArcaniaEnchantType.ESSENCE.getKeyName(),
                 "Increases xp dropped by mobs",
                 3,
                 1,
-                10,
+                EnchantRarityEnum.LEGENDARY.getNumericValue(),
                 10,
                 15,
                 1
         );
-    }
-
-    public static void onProc(Player player, EntityDeathEvent event, Map<Enchantment, Integer> enchants) {
-        int essenceLevel = 0;
-        Enchantment essenceEnchant = Arcania.getEnchantRegistry().get(EssenceEnchant.INSTANCE.getKey());
-        if (enchants.containsKey(essenceEnchant))
-            essenceLevel = enchants.get(essenceEnchant);
-
-        float xp = event.getDroppedExp();
-        if (essenceLevel > 0)
-            xp = getScaledXP(xp, essenceLevel);
-
-        Enchantment magnetEnchant = Arcania.getEnchantRegistry().get(MagnetEnchant.INSTANCE.getKey());
-
-        if (enchants.containsKey(magnetEnchant)) {
-           MagnetEnchant.onProc(player, event, xp);
-        } else {
-            event.setDroppedExp((int)xp);
-        }
-    }
-
-    public static float getScaledXP(float baseXP, int level) {
-        ConfigManager configManager = Arcania.getConfigManager();
-        double k = configManager.getEssenceK();
-        List<Double> multipliers = configManager.getEssenceXpMultiplier();
-
-        if (baseXP <= 5) {
-            return (float) (baseXP * (1 + multipliers.get(level - 1)));
-        } else {
-            double bonus = baseXP * multipliers.get(level - 1) * (k / (baseXP + k));
-            return (float) (baseXP + bonus);
-        }
     }
 
     @Override

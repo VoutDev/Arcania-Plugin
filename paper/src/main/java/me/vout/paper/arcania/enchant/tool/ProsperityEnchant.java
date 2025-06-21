@@ -6,7 +6,9 @@ import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.ItemTypeKeys;
 import io.papermc.paper.registry.set.RegistryKeySet;
 import io.papermc.paper.registry.set.RegistrySet;
+import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
+import me.vout.paper.arcania.enchant.EnchantRarityEnum;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.bukkit.enchantments.Enchantment;
@@ -19,7 +21,6 @@ import org.bukkit.inventory.ItemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
 import java.util.Set;
 
 public class ProsperityEnchant extends ArcaniaEnchant {
@@ -27,26 +28,15 @@ public class ProsperityEnchant extends ArcaniaEnchant {
 
     private ProsperityEnchant() {
         super("Prosperity",
-                "prosperity",
+                ArcaniaEnchantType.PROSPERITY.getKeyName(),
                 "Adds chance for double block drops",
                 3,
                 1,
-                10,
+                EnchantRarityEnum.RARE.getNumericValue(),
                 10,
                 15,
                 1
                 );
-    }
-
-    public static boolean shouldApplyEffect(int level) {
-        Random random = new Random();
-        float chance = switch (level) {
-            case 1 -> 0.1f; // 10% chance
-            case 2 -> 0.2f; // 20% chance
-            case 3 -> 0.35f; // 35% chance
-            default -> 0f;
-        };
-        return random.nextFloat() < chance;
     }
 
     @Override

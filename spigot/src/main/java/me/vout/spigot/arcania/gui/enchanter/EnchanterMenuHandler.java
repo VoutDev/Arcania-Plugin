@@ -1,13 +1,13 @@
 package me.vout.spigot.arcania.gui.enchanter;
 
+import me.vout.core.arcania.enums.EnchantExtraEnum;
+import me.vout.core.arcania.util.InventoryHelper;
+import me.vout.core.arcania.util.ItemHelper;
 import me.vout.spigot.arcania.Arcania;
 import me.vout.spigot.arcania.enchant.ArcaniaEnchant;
-import me.vout.spigot.arcania.enchant.EnchantExtraEnum;
 import me.vout.spigot.arcania.enchant.EnchantRarityEnum;
 import me.vout.spigot.arcania.gui.GuiHelper;
 import me.vout.spigot.arcania.util.EnchantHelper;
-import me.vout.spigot.arcania.util.InventoryHelper;
-import me.vout.spigot.arcania.util.ItemHelper;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -34,8 +34,8 @@ public class EnchanterMenuHandler {
             EnchanterActionsEnum action = GuiHelper.isEnchanterAction(slotItem);
             if (action != null) {
                 int playersLevels = player.getLevel();
-                if (playersLevels >= action.getRarity().getCost()) {
-                    player.setLevel(playersLevels - action.getRarity().getCost());
+                if (playersLevels >= action.getRarity().getNumericValue()) {
+                    player.setLevel(playersLevels - action.getRarity().getNumericValue());
                     ArcaniaEnchant enchant = getEnchant(action.getRarity(), false);
                     int level = getLevel(enchant);
                     InventoryHelper.giveOrDrop(player, EnchantHelper.getEnchantBook(enchant, level, true));
@@ -43,6 +43,7 @@ public class EnchanterMenuHandler {
                 } else {
                     ItemStack errorItem = new ItemStack(Material.RED_WOOL);
                     ItemMeta meta = errorItem.getItemMeta();
+                    assert meta != null;
                     meta.setDisplayName(ItemHelper.colorizeHex(EnchantExtraEnum.ERROR_MESSAGE.getColor() + "Not enough levels!"));
                     slotItem.setType(Material.RED_WOOL);
                     slotItem.setItemMeta(meta);
