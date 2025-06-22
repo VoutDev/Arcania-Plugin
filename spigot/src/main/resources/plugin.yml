@@ -44,6 +44,10 @@ permissions:
     description: Allows reloading the plugin
     default: op
 
+  arcania.clear:
+    description: Clears lore and arcania nbt from held item
+    default: op
+
   arcania.menu.tester:
     description: Allows access to tester menu
     default: op

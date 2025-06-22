@@ -25,6 +25,7 @@ public class ArcaniaTabCompleter implements TabCompleter {
         permissionMapping.put("arcania.menu.enchanter", "enchanter");
         permissionMapping.put("arcania.menu.enchants", "enchants");
         permissionMapping.put("arcania.menu.tester", "tester");
+        permissionMapping.put("arcania.clear","clear");
     }
 
     @Override

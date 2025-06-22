@@ -2,11 +2,13 @@ package me.vout.spigot.arcania.command;
 
 import me.vout.core.arcania.gui.GuiTypeEnum;
 import me.vout.core.arcania.providers.ArcaniaProvider;
+import me.vout.spigot.arcania.util.ItemHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class ArcaniaCommand implements CommandExecutor {
@@ -70,6 +72,9 @@ public class ArcaniaCommand implements CommandExecutor {
                 case "reload":
                     handleAdminCommand(sender, subcommand, label); // Delegate to a new method
                     break;
+                case "clear":
+                    handleAdminCommand(sender, subcommand, label);
+                    break;
 
                 default:
                     player.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " [menu|tinkerer|...|reload|invsee]");
@@ -91,7 +96,22 @@ public class ArcaniaCommand implements CommandExecutor {
             ArcaniaProvider.getPlugin().getJavaPlugin().reloadConfig(); // Use Bukkit's reloadConfig
             ArcaniaProvider.getPlugin().reloadManagers(); // Your custom reload logic
             sender.sendMessage(ChatColor.GREEN + "Plugin reloaded!");
-        } else {
+        }
+        else if (subcommand.equals("clear")) {
+            if (!sender.hasPermission("arcania.clear")) {
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use Arcania clear!");
+                return;
+            }
+            Player player = (Player) sender;
+            ItemStack heldItem = player.getInventory().getItemInMainHand();
+            if (heldItem.getType().isAir()) {
+                sender.sendMessage(ChatColor.YELLOW + "Must be holding an item");
+                return;
+            }
+            ItemHelper.clearDataForItem(heldItem);
+            sender.sendMessage(ChatColor.GREEN + "Held item cleared!");
+        }
+        else {
             sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " [subcommand]"); // Fallback for console or invalid player subcommand
         }
     }
