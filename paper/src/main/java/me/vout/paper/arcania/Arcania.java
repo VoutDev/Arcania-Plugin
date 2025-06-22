@@ -8,6 +8,7 @@ import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.core.arcania.enums.EnchantsFilterEnum;
 import me.vout.core.arcania.enums.IEnchantRarity;
 import me.vout.core.arcania.listener.ArcaniaEnchantListener;
+import me.vout.core.arcania.listener.BlockUpdateListener;
 import me.vout.core.arcania.listener.WorldListener;
 import me.vout.core.arcania.managers.ConfigManager;
 import me.vout.core.arcania.providers.ArcaniaProvider;
@@ -83,6 +84,9 @@ public final class Arcania extends JavaPlugin implements ArcaniaPlugin {
         );
         server.getPluginManager().registerEvents(
                 new WorldListener(), this
+        );
+        server.getPluginManager().registerEvents(
+                new BlockUpdateListener(), this
         );
         for (org.bukkit.World world : Bukkit.getWorlds()) { // Use org.bukkit.World to avoid ambiguity
             blockTaggingService.loadWorldData(world.getUID());

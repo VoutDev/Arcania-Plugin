@@ -5,6 +5,7 @@ import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.core.arcania.enums.EnchantsFilterEnum;
 import me.vout.core.arcania.enums.IEnchantRarity;
 import me.vout.core.arcania.listener.ArcaniaEnchantListener;
+import me.vout.core.arcania.listener.BlockUpdateListener;
 import me.vout.core.arcania.listener.WorldListener;
 import me.vout.core.arcania.managers.ConfigManager;
 import me.vout.core.arcania.managers.GuiManagerBase;
@@ -87,6 +88,9 @@ public final class Arcania extends JavaPlugin implements ArcaniaPlugin {
         );
         getServer().getPluginManager().registerEvents(
                 new WorldListener(), this
+        );
+        getServer().getPluginManager().registerEvents(
+                new BlockUpdateListener(), this
         );
     }
 

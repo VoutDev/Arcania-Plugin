@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="Cleaned up command dependencies for paper.&#10;Updated version.&#10;Modified config to better handle permissions.">
+    <list default="true" id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="Added command for spigot to allow clearing lore and Arcania nbt">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/Arcania-Core-2.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/Arcania-Core-2.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/command/ArcaniaCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/command/ArcaniaCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/command/tab/ArcaniaTabCompleter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/command/tab/ArcaniaTabCompleter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/util/ItemHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/util/ItemHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spigot/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/src/main/resources/plugin.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/src/main/java/me/vout/paper/arcania/Arcania.java" beforeDir="false" afterPath="$PROJECT_DIR$/paper/src/main/java/me/vout/paper/arcania/Arcania.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/Arcania.java" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/src/main/java/me/vout/spigot/arcania/Arcania.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,12 +88,47 @@
       <option name="project" value="LOCAL" />
       <updated>1750621219585</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added command for spigot to allow clearing lore and Arcania nbt">
+      <option name="closed" value="true" />
+      <created>1750633017095</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750633017095</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adds separation for essence and enrichment config." />
     <MESSAGE value="Cleaned up command dependencies for paper.&#10;Updated version.&#10;Modified config to better handle permissions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up command dependencies for paper.&#10;Updated version.&#10;Modified config to better handle permissions." />
+    <MESSAGE value="Added command for spigot to allow clearing lore and Arcania nbt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added command for spigot to allow clearing lore and Arcania nbt" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
