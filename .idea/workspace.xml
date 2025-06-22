@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/util/MathHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Arcania.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/enchants/weapon/EssenceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/enchants/weapon/EssenceHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/managers/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/managers/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/util/ToolHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/util/ToolHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/Arcania-Core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/Arcania-Core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/HarvesterHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/HarvesterHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/QuarryHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/QuarryHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/VeinMinerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/VeinMinerHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/ProsperityHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/ProsperityHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/EssenceHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/EssenceHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHelperBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHelperBase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/ConfigManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/service/BlockTaggingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/service/BlockTaggingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/strategies/IBlockTaggingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$BlockBreakData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$BlockBreakData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ItemHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ItemHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ToolHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ToolHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2ypipFQcYsq8Z9rLf0WevzIWUC2" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JAR Application.1.21.5 Vanilla.executor": "Debug",
+    "Maven.Arcania [clean].executor": "Run",
+    "Maven.Arcania [compile].executor": "Run",
+    "Maven.Arcania [package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/dakot/OneDrive/Desktop/Test Servers/1.21.4 Server Vanilla/server.jar"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="1.21.5 Vanilla" type="JarApplication">
+      <option name="JAR_PATH" value="$USER_HOME$/OneDrive/Desktop/Test Servers/1.21.4 Server Vanilla/server.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\dakot\OneDrive\Desktop\Test Servers\1.21.4 Server Vanilla" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="" />
+      <created>1750538097339</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750538097339</updated>
+    </task>
+    <servers />
+  </component>
+</project>

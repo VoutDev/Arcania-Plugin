@@ -3,8 +3,8 @@ package me.vout.core.arcania.util;
 import me.vout.core.arcania.enchants.pickaxe.QuarryHelper;
 import me.vout.core.arcania.enchants.pickaxe.VeinMinerHelper;
 import me.vout.core.arcania.enchants.tool.ProsperityHelper;
-import me.vout.core.arcania.enchants.weapon.EssenceHelper;
 import me.vout.core.arcania.enums.ArcaniaEnchantType;
+import me.vout.core.arcania.managers.ConfigManager;
 import me.vout.core.arcania.providers.ArcaniaProvider;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -99,9 +99,9 @@ public class ToolHelper {
             if (!blockToBreakHasMetadata) continue;
 
             // Simulate if tool would survive breaking this block
-            int damage = me.vout.core.arcania.util.ToolHelper.simulateToolDamage(tool, 1);
+            int damage = simulateToolDamage(tool, 1);
             cumulativeDamage += damage;
-            if (!me.vout.core.arcania.util.ToolHelper.wouldToolSurvive(tool, cumulativeDamage)) {
+            if (!wouldToolSurvive(tool, cumulativeDamage)) {
                 // Tool would break, stop breaking blocks
                 break;
             }
@@ -128,8 +128,12 @@ public class ToolHelper {
 
         // give the xp
         if (xpToGive[0] > 0) {
-            if (hasEnrichment) { //todo if enrichment and essence leverage this scaledXP, maybe move to its own method
-                xpToGive[0] = EssenceHelper.getScaledXP(xpToGive[0], activeEnchants.get(ArcaniaEnchantType.ENRICHMENT.getKey()));
+            if (hasEnrichment) {
+                ConfigManager configManager = ArcaniaProvider.getPlugin().getConfigManager();
+                double k = configManager.getEnrichmentK();
+                List<Double> multipliers = configManager.getEnrichmentXpMultiplier();
+                int cutoff = configManager.getEnrichmentCutoff();
+                xpToGive[0] = MathHelper.getScaledXP(xpToGive[0], cutoff, activeEnchants.get(ArcaniaEnchantType.ENRICHMENT.getKey()), k, multipliers);
             }
         }
 

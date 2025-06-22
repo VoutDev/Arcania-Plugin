@@ -11,8 +11,10 @@ public class ConfigManager {
     private List<String> smeltBlackListedBlocks;
     private List<Double> essenceXpMultiplier;
     private double essenceK;
+    private int essenceCutoff;
     private List<Double> enrichmentXpMultiplier;
     private double enrichmentK;
+    private int enrichmentCutoff;
 
     public void reload() {
         ArcaniaProvider.getPlugin().getJavaPlugin().getLogger().info("Reloading configs");
@@ -30,9 +32,11 @@ public class ConfigManager {
 
         essenceXpMultiplier = config.getDoubleList("enchant.essence.xp-multiplier");
         essenceK = config.getDouble("enchant.essence.k", 10.0);
+        essenceCutoff = config.getInt("enchant.essence.base-cutoff", 5);
 
         enrichmentXpMultiplier = config.getDoubleList("enchant.enrichment.xp-multiplier");
         enrichmentK = config.getDouble("enchant.enrichment.k", 10.0);
+        enrichmentCutoff = config.getInt("enchant.enrichment.base-cutoff", 5);
     }
 
     // Getters
@@ -43,7 +47,12 @@ public class ConfigManager {
     }
     public List<Double> getEssenceXpMultiplier() { return essenceXpMultiplier; }
     public double getEssenceK() { return essenceK; }
-    //todo need to correctly seperate enrichment and essence so they can be modified seperately
+    public int getEssenceCutoff() {
+        return essenceCutoff;
+    }
     public List<Double> getEnrichmentXpMultiplier() { return enrichmentXpMultiplier; }
     public double getEnrichmentK() { return enrichmentK; }
+    public int getEnrichmentCutoff() {
+        return enrichmentCutoff;
+    }
 }

@@ -59,8 +59,10 @@ public class ArcaniaEnchantListener implements Listener {
                 event.getBlock().getState() instanceof BlockInventoryHolder blockInventoryHolder) // for Chiseled Bookshelf
             useVanillaBreak = me.vout.core.arcania.util.InventoryHelper.processContainerInventory(player, blockInventoryHolder.getInventory());
 
-        if (!useVanillaBreak)
+        if (!useVanillaBreak) {
+
             ToolHelper.customBreakBlock(player, event, item, activeEnchants);
+        }
 
         if (blockTaggingService.isPlayerPlaced(event.getBlock()))
             blockTaggingService.removePlayerPlacedTag(event.getBlock());

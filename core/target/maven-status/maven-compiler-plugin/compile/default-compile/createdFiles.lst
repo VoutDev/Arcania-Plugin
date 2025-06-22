@@ -2,6 +2,7 @@ me\vout\core\arcania\enchants\tool\MagnetHelper.class
 me\vout\core\arcania\enums\ArcaniaEnchantType.class
 me\vout\core\arcania\ArcaniaPlugin.class
 me\vout\core\arcania\strategies\IEnchantmentStrategy.class
+me\vout\core\arcania\util\MathHelper.class
 me\vout\core\arcania\util\BlockBreakQueue$BlockBreakData.class
 me\vout\core\arcania\strategies\IValidToolStrategy.class
 me\vout\core\arcania\enchants\pickaxe\QuarryHelper.class
@@ -37,7 +38,6 @@ me\vout\core\arcania\enchants\pickaxe\VeinMinerHelper.class
 me\vout\core\arcania\providers\ArcaniaProvider.class
 me\vout\core\arcania\enchants\weapon\EssenceHelper.class
 me\vout\core\arcania\util\InventoryHelper.class
-me\vout\core\arcania\strategies\IBlockTaggingService.class
 me\vout\core\arcania\gui\enchants\EnchantsMenuHolder.class
 me\vout\core\arcania\listener\ArcaniaEnchantListener.class
 me\vout\core\arcania\enums\EnchantsFilterEnum.class

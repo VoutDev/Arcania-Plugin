@@ -2,7 +2,6 @@ C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\gui\PersistentDataEnu
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\strategies\IValidToolStrategy.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\gui\enchants\EnchantsMenu.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\gui\GuiHelperBase.java
-C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\strategies\IBlockTaggingService.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\enchants\pickaxe\VeinMinerHelper.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\providers\ArcaniaProvider.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\util\EnchantHelper.java
@@ -19,6 +18,7 @@ C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\gui\GuiBuilder.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\util\ToolHelper.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\managers\GuiManagerBase.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\gui\GuiTypeEnum.java
+C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\util\MathHelper.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\util\BlockBreakQueue.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\enchants\bow\BlinkHelper.java
 C:\Plugins\Arcania\core\src\main\java\me\vout\core\arcania\util\BlockXpTable.java
