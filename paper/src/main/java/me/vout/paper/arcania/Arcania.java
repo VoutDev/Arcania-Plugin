@@ -131,7 +131,8 @@ public final class Arcania extends JavaPlugin implements ArcaniaPlugin {
         return blockTaggingService;
     }
 
-    public static GuiManager getGuiManager() {
+    @Override
+    public GuiManager getGuiManager() {
         return guiManager;
     }
 

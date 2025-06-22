@@ -14,7 +14,7 @@ public class MagnetEnchant extends ArcaniaEnchant {
                 1,
                 0.1,
                 5,
-                me.vout.core.arcania.util.ItemHelper::isToolExtended);
+                me.vout.core.arcania.util.ItemHelper::isMainHandTool);
     }
 
     @Override

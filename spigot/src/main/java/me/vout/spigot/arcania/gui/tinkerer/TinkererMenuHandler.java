@@ -101,7 +101,7 @@ public class TinkererMenuHandler {
     }
 
     private static ItemStack buildOutputItem(ItemStack input1, ItemStack input2) {
-        if ((me.vout.core.arcania.util.ItemHelper.isArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input1.getType())) &&
+        if ((me.vout.core.arcania.util.ItemHelper.isWearableArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isMainHandTool(input1.getType())) &&
         input2.getType() == Material.ENCHANTED_BOOK) {
             if (ItemHelper.isArcaniaEnchant(input2)) {
                 Map<NamespacedKey, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
@@ -141,8 +141,8 @@ public class TinkererMenuHandler {
             }
         } // 2 valid non enchanted book items
         else if (input1.getType().equals(input2.getType()) &&
-                (me.vout.core.arcania.util.ItemHelper.isArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input1.getType())) &&
-                (me.vout.core.arcania.util.ItemHelper.isArmor(input2.getType()) || me.vout.core.arcania.util.ItemHelper.isToolExtended(input2.getType()))) {
+                (me.vout.core.arcania.util.ItemHelper.isWearableArmor(input1.getType()) || me.vout.core.arcania.util.ItemHelper.isMainHandTool(input1.getType())) &&
+                (me.vout.core.arcania.util.ItemHelper.isWearableArmor(input2.getType()) || me.vout.core.arcania.util.ItemHelper.isMainHandTool(input2.getType()))) {
             Map<NamespacedKey, Integer> enchantItemMap = EnchantHelper.getItemEnchants(input1);
             Map<NamespacedKey, Integer> enchantItem2Map = EnchantHelper.getItemEnchants(input2);
             if (enchantItemMap.isEmpty() && enchantItem2Map.isEmpty())  return null;
@@ -235,9 +235,7 @@ public class TinkererMenuHandler {
             for (Map.Entry<ArcaniaEnchant, Integer> entry : sortedEnchants) {
                 ArcaniaEnchant enchant = entry.getKey();
                 int level = entry.getValue();
-                //todo This needs to be handled better, again Vein Miner breaks
-                nbtCompound.setString(enchant.getName().replace(' ', '_'), String.valueOf(level));
-                //Or do nbtCompound.setInteger if you prefer it to be a integer
+                nbtCompound.setString(enchant.KEY.getKey(), String.valueOf(level));
             }
         });
 

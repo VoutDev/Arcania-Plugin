@@ -15,7 +15,7 @@ public class QuarryEnchant extends ArcaniaEnchant {
                 1,
                 0.5,
                 2,
-                me.vout.core.arcania.util.ItemHelper::isDigger);
+                me.vout.core.arcania.util.ItemHelper::isMiningTool);
     }
 
     @Override

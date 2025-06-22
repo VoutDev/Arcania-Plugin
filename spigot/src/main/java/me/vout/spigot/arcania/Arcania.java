@@ -7,6 +7,7 @@ import me.vout.core.arcania.enums.IEnchantRarity;
 import me.vout.core.arcania.listener.ArcaniaEnchantListener;
 import me.vout.core.arcania.listener.WorldListener;
 import me.vout.core.arcania.managers.ConfigManager;
+import me.vout.core.arcania.managers.GuiManagerBase;
 import me.vout.core.arcania.providers.ArcaniaProvider;
 import me.vout.core.arcania.service.BlockTaggingService;
 import me.vout.core.arcania.strategies.IEnchantmentStrategy;
@@ -56,13 +57,13 @@ public final class Arcania extends JavaPlugin implements ArcaniaPlugin {
     }
 
     public void registerCommands() {
-        Objects.requireNonNull(getCommand("arcania")).setExecutor(new ArcaniaCommand(guiManager, this));
+        Objects.requireNonNull(getCommand("arcania")).setExecutor(new ArcaniaCommand());
         Objects.requireNonNull(getCommand("arcania")).setTabCompleter(new ArcaniaTabCompleter());
-        Objects.requireNonNull(getCommand("tinkerer")).setExecutor(new TinkererCommand(guiManager));
-        Objects.requireNonNull(getCommand("disenchanter")).setExecutor(new DisenchanterCommand(guiManager));
-        Objects.requireNonNull(getCommand("enchanter")).setExecutor(new EnchanterCommand(guiManager));
-        Objects.requireNonNull(getCommand("enchants")).setExecutor(new EnchantsCommand(guiManager));
-        Objects.requireNonNull(getCommand("tester")).setExecutor(new TesterCommand(guiManager));
+        Objects.requireNonNull(getCommand("tinkerer")).setExecutor(new TinkererCommand());
+        Objects.requireNonNull(getCommand("disenchanter")).setExecutor(new DisenchanterCommand());
+        Objects.requireNonNull(getCommand("enchanter")).setExecutor(new EnchanterCommand());
+        Objects.requireNonNull(getCommand("enchants")).setExecutor(new EnchantsCommand());
+        Objects.requireNonNull(getCommand("tester")).setExecutor(new TesterCommand());
     }
 
     public void reloadManagers() {
@@ -116,6 +117,11 @@ public final class Arcania extends JavaPlugin implements ArcaniaPlugin {
     @Override
     public ConfigManager getConfigManager() {
         return configManager;
+    }
+
+    @Override
+    public GuiManagerBase getGuiManager() {
+        return guiManager;
     }
 
     @Override

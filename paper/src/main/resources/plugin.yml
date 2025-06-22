@@ -8,23 +8,37 @@ description: Custom enchants plugin
 commands:
   arcania:
     description: Main command for Arcania plugin
-    usage: /<command> [reload|menu|tinkerer|disenchanter|enchanter|enchants]
-    permission: arcania.menu
-    permission-message: You do not have permission!
+    usage: /<command> [reload|menu|tinkerer|disenchanter|enchanter|enchants|tester]
+    permission: arcania.use
   enchants:
     description: Opens the enchants menu
     usage: /<command>
     permission: arcania.menu.enchants
-    permission-message: You do not have permission!
+  tester:
+    description: Gives access to all enchants for testing
+    usage: /<command>
+    permission: arcania.menu.tester
 
 permissions:
+  arcania.*:
+    description: Allows access to Arcania Enchants
+    default: op
+
+  arcania.use:
+    description: Allows access to use base /arcania command
+    default: true
+
   arcania.reload:
     description: Allows reloading the plugin
     default: op
-  arcania.menu:
-    description: Allows using the main command
-    default: true
-  arcania.menu.enchants:
-    description: Allows using the enchantment menu command
-    default: true
 
+  arcania.menu.tester:
+    description: Allows access to tester menu
+    default: op
+
+  arcania.menu:
+    description: Gives access to the menus
+    default: true
+    children:
+      arcania.menu.base: true
+      arcania.menu.enchants: true

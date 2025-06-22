@@ -15,7 +15,7 @@ public class FrostbiteEnchant extends ArcaniaEnchant {
                 2,
                 0.6,
                 2,
-                me.vout.core.arcania.util.ItemHelper::isWeapon);
+                me.vout.core.arcania.util.ItemHelper::isCombatWeapon);
     }
 
     @Override

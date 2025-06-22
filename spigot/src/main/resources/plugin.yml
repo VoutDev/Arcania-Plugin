@@ -9,7 +9,7 @@ commands:
   arcania:
     description: Main command for Arcania plugin
     usage: /<command> [reload|menu|tinkerer|disenchanter|enchanter|enchants|tester]
-    permission: arcania.menu
+    permission: arcania.use
   tinkerer:
     description: Opens the tinkerer menu
     usage: /<command>
@@ -32,20 +32,28 @@ commands:
     permission: arcania.menu.tester
 
 permissions:
-  arcania:
+  arcania.*:
     description: Allows access to Arcania Enchants
+    default: op
+
+  arcania.use:
+    description: Allows access to use base /arcania command
+    default: true
+
+  arcania.reload:
+    description: Allows reloading the plugin
+    default: op
+
+  arcania.menu.tester:
+    description: Allows access to tester menu
+    default: op
+
+  arcania.menu:
+    description: Gives access to the menus
     default: true
     children:
-      arcania.reload:
-        description: Allows reloading the plugin
-        default: op
-      arcania.menu:
-        description: Gives access to the menus
-        default: true
-        children:
-          arcania.menu.tinkerer: true
-          arcania.menu.disenchanter: true
-          arcania.menu.enchanter: true
-          arcania.menu.enchants: true
-          arcania.menu.tester: true
-
+      arcania.menu.base: true
+      arcania.menu.tinkerer: true
+      arcania.menu.disenchanter: true
+      arcania.menu.enchanter: true
+      arcania.menu.enchants: true

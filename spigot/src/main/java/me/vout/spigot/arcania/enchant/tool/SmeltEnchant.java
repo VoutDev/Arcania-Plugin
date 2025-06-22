@@ -14,7 +14,7 @@ public class SmeltEnchant extends ArcaniaEnchant {
                 1,
                 0.1,
                 5,
-                me.vout.core.arcania.util.ItemHelper::isTool);
+                me.vout.core.arcania.util.ItemHelper::isHarvestingTool);
     }
 
     @Override

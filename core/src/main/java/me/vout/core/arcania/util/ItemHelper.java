@@ -12,12 +12,13 @@ import org.bukkit.inventory.Recipe;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ItemHelper {
-
+    private static final Set<String> ARMOR_SUFFIXES = Set.of("_HELMET", "_CHESTPLATE", "_LEGGINGS", "_BOOTS");
     public static Map<Material, FurnaceRecipe> furnaceRecipes = new HashMap<>();
 
     public static void initFurnaceRecipes() {
@@ -26,43 +27,37 @@ public class ItemHelper {
         while (recipeIterator.hasNext()) {
             Recipe recipe = recipeIterator.next();
             if (recipe instanceof FurnaceRecipe furnaceRecipe) {
-                //todo see what these return, and if it makes sense that logs dont get converted into anything
-                // Arcania.getInstance().getLogger().log(Level.INFO, "initFurnaceRecipes: " + furnaceRecipe.getInput().getType().name());
                 furnaceRecipes.put(furnaceRecipe.getInput().getType(), furnaceRecipe);
             }
         }
         ArcaniaProvider.getPlugin().getJavaPlugin().getLogger().log(Level.INFO, "number of furnace recipes: " + furnaceRecipes.size());
     }
-    
-    public static boolean isTool(Material mat) {
-        String name = mat.name();
-        return name.endsWith("_PICKAXE") ||
-                name.endsWith("_AXE") ||
-                name.endsWith("_SHOVEL") ||
-                name.endsWith("_HOE") ||
-                name.endsWith("SHEARS");
+
+
+    // --- Internal Helper for Generic Suffix Checking ---
+    private static boolean matchesAnySuffix(String materialName, Set<String> suffixes) {
+        for (String suffix : suffixes) {
+            if (materialName.endsWith(suffix)) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public static boolean isBlockBreakTool(Material mat) {
-        String name = mat.name();
-        return name.endsWith("_PICKAXE") ||
-                name.endsWith("_SHOVEL") ||
-                name.endsWith("_AXE") ||
-                name.endsWith("SHEARS");
-    }
-
-    public static boolean isToolExtended(Material mat) {
-        return isTool(mat) || isSword(mat) || isRangedWeapon(mat) || isTrident(mat) || isHoe(mat);
-    }
-
-    public static boolean isDigger(Material mat) {
-        return mat.name().endsWith("_PICKAXE") ||
-                mat.name().endsWith("_SHOVEL");
-    }
+    //Basic Item Checks
 
     public static boolean isPickaxe(Material mat) {
         return mat.name().endsWith("_PICKAXE");
     }
+
+    public static boolean isShovel(Material mat) {
+        return mat.name().endsWith("_SHOVEL");
+    }
+
+    public static boolean isAxe(Material mat) {
+        return mat.name().endsWith("_AXE");
+    }
+
     public static boolean isHoe(Material mat) {
         return mat.name().endsWith("_HOE");
     }
@@ -71,36 +66,54 @@ public class ItemHelper {
         return mat.name().endsWith("_SWORD");
     }
 
+    public static boolean isMace(Material mat) {
+        return mat.name().endsWith("MACE");
+    }
+
     public static boolean isTrident(Material mat) {
         return mat.name().endsWith("TRIDENT");
     }
 
-    public static boolean isWeapon(Material mat) {
-        String name = mat.name();
-        return name.endsWith("_SWORD") ||
-                name.endsWith("_AXE") ||
-                name.endsWith("BOW") ||
-                name.endsWith("CROSSBOW");
+    public static boolean isBow(Material mat) {
+        return mat.name().endsWith("BOW");
     }
 
-    public static boolean isRangedWeapon(Material mat) {
-        String name = mat.name();
-        return name.endsWith("BOW") ||
-                name.endsWith("CROSSBOW");
+    public static boolean isCrossbow(Material mat) {
+        return mat.name().endsWith("CROSSBOW");
+    }
+
+    public static boolean isShears(Material mat) {
+        return mat.name().endsWith("SHEARS");
+    }
+
+    //Functional groupings
+
+    public static boolean isMiningTool(Material mat) {
+        return isPickaxe(mat) || isShovel(mat);
+    }
+
+    public static boolean isHarvestingTool(Material mat) { // Tools for farming, logging, breaking (non-combat)
+        return isAxe(mat) || isHoe(mat) || isShears(mat) || isMiningTool(mat);
     }
 
     public static boolean isMeleeWeapon(Material mat) {
-        String name = mat.name();
-        return name.endsWith("_SWORD") ||
-                name.endsWith("_AXE");
+        return isSword(mat) || isAxe(mat) || isMace(mat);
     }
 
-    public static boolean isArmor(Material mat) {
-        String name = mat.name();
-        return name.endsWith("_HELMET") ||
-                name.endsWith("_CHESTPLATE") ||
-                name.endsWith("_LEGGINGS") ||
-                name.endsWith("_BOOTS");
+    public static boolean isRangedWeapon(Material mat) {
+        return isBow(mat) || isCrossbow(mat);
+    }
+
+    public static boolean isCombatWeapon(Material mat) {
+        return isMeleeWeapon(mat) || isRangedWeapon(mat) || isTrident(mat); // Trident is both melee and ranged
+    }
+
+    public static boolean isWearableArmor(Material mat) {
+        return matchesAnySuffix(mat.name(), ARMOR_SUFFIXES);
+    }
+
+    public static boolean isMainHandTool(Material mat) {
+        return isHarvestingTool(mat) || isCombatWeapon(mat);
     }
 
     public static String colorizeHex(String message) {

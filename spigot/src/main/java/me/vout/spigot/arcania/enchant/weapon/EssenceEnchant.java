@@ -14,7 +14,7 @@ public class EssenceEnchant extends ArcaniaEnchant {
                 3,
                 0.3,
                 4,
-                me.vout.core.arcania.util.ItemHelper::isMeleeWeapon);
+                me.vout.core.arcania.util.ItemHelper::isCombatWeapon);
     }
 
     @Override

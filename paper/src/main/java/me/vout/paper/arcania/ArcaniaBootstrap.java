@@ -10,6 +10,8 @@ import io.papermc.paper.registry.event.RegistryEvents;
 import io.papermc.paper.registry.keys.EnchantmentKeys;
 import io.papermc.paper.registry.keys.tags.EnchantmentTagKeys;
 import me.vout.paper.arcania.command.ArcaniaCommand;
+import me.vout.paper.arcania.command.EnchantsCommand;
+import me.vout.paper.arcania.command.TesterCommand;
 import me.vout.paper.arcania.enchant.ArcaniaEnchant;
 import me.vout.paper.arcania.manager.ArcaniaEnchantManager;
 import net.kyori.adventure.key.Key;
@@ -20,6 +22,8 @@ public class ArcaniaBootstrap implements PluginBootstrap {
     private static ArcaniaEnchantManager enchantManager;
 
     private final ArcaniaCommand arcaniaCommand = new ArcaniaCommand();
+    private final TesterCommand testerCommand = new TesterCommand();
+    private final EnchantsCommand enchantsCommand = new EnchantsCommand();
 
     @Override
     public void bootstrap(BootstrapContext context) {
@@ -28,6 +32,8 @@ public class ArcaniaBootstrap implements PluginBootstrap {
         // Register command handler
         lifecycle.registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             commands.registrar().register("arcania", arcaniaCommand);
+            commands.registrar().register("tester", testerCommand);
+            commands.registrar().register("enchants", enchantsCommand);
         });
 
         // Register enchantment handler - this will be called at the right time by Paper

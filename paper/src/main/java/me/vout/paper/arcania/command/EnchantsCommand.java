@@ -1,21 +1,20 @@
-package me.vout.spigot.arcania.command;
+package me.vout.paper.arcania.command;
 
+import io.papermc.paper.command.brigadier.BasicCommand;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
 import me.vout.core.arcania.gui.GuiTypeEnum;
 import me.vout.core.arcania.providers.ArcaniaProvider;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
-public class EnchantsCommand implements CommandExecutor {
+public class EnchantsCommand implements BasicCommand {
     @Override
-    public boolean onCommand(@NonNull CommandSender sender,@NonNull Command command,@NonNull String label,@NonNull String[] args) {
+    public void execute(CommandSourceStack commandSourceStack, String[] args) {
+        CommandSender sender = commandSourceStack.getSender();
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Only players can use this command.");
-            return true;
+            return ;
         }
         ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.ENCHANTS);
-        return true;
     }
 }

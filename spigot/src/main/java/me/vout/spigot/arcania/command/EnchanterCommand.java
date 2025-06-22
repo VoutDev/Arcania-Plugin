@@ -1,7 +1,7 @@
 package me.vout.spigot.arcania.command;
 
 import me.vout.core.arcania.gui.GuiTypeEnum;
-import me.vout.spigot.arcania.manager.GuiManager;
+import me.vout.core.arcania.providers.ArcaniaProvider;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -9,19 +9,13 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class EnchanterCommand implements CommandExecutor {
-
-    private final GuiManager guiManager;
-
-    public EnchanterCommand(GuiManager guiManager) {
-        this.guiManager = guiManager;
-    }
     @Override
     public boolean onCommand(@NonNull CommandSender sender,@NonNull Command command,@NonNull String label, String[] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("Only players can use this command.");
             return true;
         }
-        guiManager.openGui(player, GuiTypeEnum.ENCHANTER);
+        ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.ENCHANTER);
         return true;
     }
 }

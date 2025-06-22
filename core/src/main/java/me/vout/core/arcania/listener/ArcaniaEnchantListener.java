@@ -10,6 +10,7 @@ import me.vout.core.arcania.enums.ArcaniaEnchantType;
 import me.vout.core.arcania.providers.ArcaniaProvider;
 import me.vout.core.arcania.service.BlockTaggingService;
 import me.vout.core.arcania.util.InventoryHelper;
+import me.vout.core.arcania.util.ItemHelper;
 import me.vout.core.arcania.util.ToolHelper;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -43,7 +44,7 @@ public class ArcaniaEnchantListener implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         BlockTaggingService blockTaggingService = ArcaniaProvider.getPlugin().getBlockTaggingService();
 
-        if (item.getType().isAir() ||  !me.vout.core.arcania.util.ItemHelper.isBlockBreakTool(item.getType())) return;
+        if (item.getType().isAir() ||  !ItemHelper.isHarvestingTool(item.getType())) return;
 
         Map<NamespacedKey, Integer> activeEnchants = ArcaniaProvider.getPlugin().getEnchantStrategy().getActiveEnchantments(item);
 

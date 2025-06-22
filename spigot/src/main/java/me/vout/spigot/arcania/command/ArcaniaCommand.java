@@ -1,8 +1,7 @@
 package me.vout.spigot.arcania.command;
 
 import me.vout.core.arcania.gui.GuiTypeEnum;
-import me.vout.spigot.arcania.Arcania;
-import me.vout.spigot.arcania.manager.GuiManager;
+import me.vout.core.arcania.providers.ArcaniaProvider;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -11,83 +10,89 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public class ArcaniaCommand implements CommandExecutor {
-    private final GuiManager guiManager;
-    private final Arcania plugin;
-
-    public ArcaniaCommand(GuiManager guiManager, Arcania plugin) {
-        this.guiManager = guiManager;
-        this.plugin = plugin;
-    }
 
     @Override
-    public boolean onCommand(@NonNull CommandSender sender,@NonNull Command command,@NonNull String label,@NonNull String[] args) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage("Only players can use this command.");
-            return true;
-        }
-        String subcommand = (args.length == 0) ? "menu" : args[0].toLowerCase();
 
-        switch (subcommand) {
-            case "menu": //Probably set this as default case and remove the menu from here and plugin.yml for arcania
-                if (!player.hasPermission("arcania.menu")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the main menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.MAIN);
-                break;
+   public boolean onCommand(@NonNull CommandSender sender,@NonNull Command command,@NonNull String label,@NonNull String[] args) {
+        String subcommand = (args.length == 0) ? "menu" : args[0].toLowerCase(); // Default to "menu"
 
-            case "reload":
-                if (!player.hasPermission("arcania.reload")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to reload this plugin!");
-                    return true;
-                }
-                plugin.reloadManagers();
-                player.sendMessage(ChatColor.GREEN + "Plugin reloaded!");
-                break;
+        if (sender instanceof Player player) { // Subcommands requiring Player sender
+            switch (subcommand) {
+                case "menu":
+                    // Permission check is usually more concise here
+                    if (!player.hasPermission("arcania.menu.base")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the main menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.MAIN);
+                    break;
 
-            case "tinkerer":
-                if (!player.hasPermission("arcania.menu.tinkerer")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the tinkerer menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.TINKERER);
-                break;
+                case "tinkerer":
+                    if (!player.hasPermission("arcania.menu.tinkerer")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the tinkerer menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.TINKERER);
+                    break;
 
-            case "disenchanter":
-                if (!player.hasPermission("arcania.menu.disenchanter")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the disenchanter menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.DISENCHANTER);
-                break;
+                case "disenchanter":
+                    if (!player.hasPermission("arcania.menu.disenchanter")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the disenchanter menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.DISENCHANTER);
+                    break;
 
-            case "enchanter":
-                if (!player.hasPermission("arcania.menu.enchanter")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the enchanter menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.ENCHANTER);
-                break;
+                case "enchanter":
+                    if (!player.hasPermission("arcania.menu.enchanter")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the enchanter menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.ENCHANTER);
+                    break;
 
-            case "enchants":
-                if (!player.hasPermission("arcania.menu.enchants")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the enchants menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.ENCHANTS);
-                break;
-            case "tester":
-                if (!player.hasPermission("arcania.menu.tester")) {
-                    player.sendMessage(ChatColor.RED + "You do not have permission to view the tester menu!");
-                    return true;
-                }
-                guiManager.openGui(player, GuiTypeEnum.TESTER);
-                break;
+                case "enchants":
+                    if (!player.hasPermission("arcania.menu.enchants")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the enchants menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.ENCHANTS);
+                    break;
 
-            default:
-                player.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " [subcommand]");
-                break;
+                case "tester":
+                    if (!player.hasPermission("arcania.menu.tester")) {
+                        player.sendMessage(ChatColor.RED + "You do not have permission to view the tester menu!");
+                        return true;
+                    }
+                    ArcaniaProvider.getPlugin().getGuiManager().openGui(player, GuiTypeEnum.TESTER);
+                    break;
+
+                case "reload":
+                    handleAdminCommand(sender, subcommand, label); // Delegate to a new method
+                    break;
+
+                default:
+                    player.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " [menu|tinkerer|...|reload|invsee]");
+                    break;
+            }
+        } else {
+            handleAdminCommand(sender, subcommand, label);
         }
         return true;
+    }
+
+    // New helper method to handle commands that can be run by console or player
+    private void handleAdminCommand(@NonNull CommandSender sender, String subcommand, String label) {
+        if (subcommand.equals("reload")) {
+            if (!sender.hasPermission("arcania.reload")) {
+                sender.sendMessage(ChatColor.RED + "You do not have permission to reload this plugin!");
+                return;
+            }
+            ArcaniaProvider.getPlugin().getJavaPlugin().reloadConfig(); // Use Bukkit's reloadConfig
+            ArcaniaProvider.getPlugin().reloadManagers(); // Your custom reload logic
+            sender.sendMessage(ChatColor.GREEN + "Plugin reloaded!");
+        } else {
+            sender.sendMessage(ChatColor.YELLOW + "Usage: /" + label + " [subcommand]"); // Fallback for console or invalid player subcommand
+        }
     }
 }

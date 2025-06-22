@@ -15,7 +15,7 @@ public class ProsperityEnchant extends ArcaniaEnchant {
                 3,
                 0.4,
                 2,
-                me.vout.core.arcania.util.ItemHelper::isBlockBreakTool);
+                me.vout.core.arcania.util.ItemHelper::isHarvestingTool);
     }
     @Override
     public boolean canApplyWith(ArcaniaEnchant enchant) {
