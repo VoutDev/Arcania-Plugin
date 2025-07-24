@@ -4,66 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="Added block update listeners to better handle player placed block modifications">
+    <list default="true" id="d2eb927a-f86c-4d33-b3fb-6ca22caccef6" name="Changes" comment="v1.0.0 release">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/ArcaniaEnchantListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/me/vout/core/arcania/listener/BlockUpdateListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/Arcania-Core-2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/ArcaniaPlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/ArcaniaPlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/bow/BlinkHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/bow/BlinkHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/HarvesterHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/HarvesterHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/TillerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/hoe/TillerHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/QuarryHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/QuarryHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/VeinMinerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/pickaxe/VeinMinerHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/MagnetHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/MagnetHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/ProsperityHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/ProsperityHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/SmeltHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/tool/SmeltHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/EssenceHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/EssenceHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper$FrostBiteArrowEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper$FrostBiteArrowEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enchants/weapon/FrostbiteHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/ArcaniaEnchantType.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/ArcaniaEnchantType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/EnchantExtraEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/EnchantExtraEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/EnchantsFilterEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/EnchantsFilterEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/IEnchantRarity.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/enums/IEnchantRarity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHelperBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHelperBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiTypeEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/GuiTypeEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/PersistentDataEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/PersistentDataEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/EnchantsMenuHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/enchants/TesterMenuHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/main/MainMenuHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/main/MainMenuHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/main/MainMenuHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/gui/main/MainMenuHolder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/ArcaniaEnchantListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/BlockUpdateListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/BlockUpdateListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/WorldListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/listener/WorldListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/ConfigManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/GuiManagerBase.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/managers/GuiManagerBase.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/providers/ArcaniaProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/providers/ArcaniaProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/service/BlockTaggingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/service/BlockTaggingService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/strategies/IEnchantmentStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/strategies/IEnchantmentStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/strategies/IValidToolStrategy.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/strategies/IValidToolStrategy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$BlockBreakData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue$BlockBreakData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockBreakQueue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockXpTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/BlockXpTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/EnchantHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/EnchantHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/InventoryHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/InventoryHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ItemHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ItemHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/MathHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/MathHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ToolHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/me/vout/core/arcania/util/ToolHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper/src/main/java/me/vout/paper/arcania/manager/ArcaniaEnchantManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/paper/src/main/java/me/vout/paper/arcania/manager/ArcaniaEnchantManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/paper/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spigot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spigot/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750634292507</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="v1.0.0 release">
+      <option name="closed" value="true" />
+      <created>1753389864387</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1753389864387</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,6 +116,7 @@
     <MESSAGE value="Cleaned up command dependencies for paper.&#10;Updated version.&#10;Modified config to better handle permissions." />
     <MESSAGE value="Added command for spigot to allow clearing lore and Arcania nbt" />
     <MESSAGE value="Added block update listeners to better handle player placed block modifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added block update listeners to better handle player placed block modifications" />
+    <MESSAGE value="v1.0.0 release" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.0 release" />
   </component>
 </project>
