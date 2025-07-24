@@ -28,6 +28,7 @@ public class ArcaniaEnchantManager {
         return Collections.unmodifiableList(enchants);
     }
 
+    //todo need to have this disableable from config
     private void enchantInit() {
         enchants.add(QuarryEnchant.INSTANCE);
         enchants.add(TillerEnchant.INSTANCE);

@@ -29,3 +29,15 @@ enchant:
   smelt:
     blacklisted-blocks:
       - '*_ORE' #Prevents silk touched ore from being smelted
+enchants-included:
+  - Quarry
+  - Tiller
+  - Prosperity
+  - Blink
+  - Enrichment
+  - Harvester
+  - Frostbite
+  - Veinminer
+  - Magnet
+  - Essence
+  - Smelt

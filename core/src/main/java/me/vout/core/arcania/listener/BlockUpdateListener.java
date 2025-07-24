@@ -53,13 +53,58 @@ public class BlockUpdateListener implements Listener {
         BlockTaggingService blockTaggingService = ArcaniaProvider.getPlugin().getBlockTaggingService();
         BlockFace direction = event.getDirection();
 
+        // Store locations to remove and locations to add
+        // Use Map<Location, Location> to map old -> new for each moved block
+        // Or just a List of Pairs (old_location, new_location)
+       /* List<Map.Entry<Location, Location>> movesToTrack = new ArrayList<>();
+
+        // Phase 1: Identify all affected blocks and their intended moves
+        for (Block pushedBlock : event.getBlocks()) {
+            if (blockTaggingService.isPlayerPlaced(pushedBlock)) {
+                Location oldLoc = pushedBlock.getLocation();
+                Location newLoc = pushedBlock.getRelative(direction).getLocation();
+                movesToTrack.add(new AbstractMap.SimpleEntry<>(oldLoc, newLoc));
+            }
+        }
+
+        // Phase 2: Apply the changes
+        for (Map.Entry<Location, Location> move : movesToTrack) {
+            Location oldLoc = move.getKey();
+            Location newLoc = move.getValue();
+
+            // 1. Remove tag from original location
+            // Get the block at the old location
+            Block oldBlock = oldLoc.getBlock();
+            if (blockTaggingService.isPlayerPlaced(oldBlock)) { // Double-check it's still tagged
+                blockTaggingService.removePlayerPlacedTag(oldBlock);
+            }
+
+            // 2. Tag at the new location
+            // Get the block at the new location (which is the pushed block)
+            Block newBlock = newLoc.getBlock(); // This Block object will be the *pushed* block's destination
+            blockTaggingService.tagBlockAsPlayerPlaced(newBlock);
+        }*/
+
         for (Block pushedBlock : event.getBlocks()) { // Blocks being pushed
             if (blockTaggingService.isPlayerPlaced(pushedBlock)) {
+
                 blockTaggingService.removePlayerPlacedTag(pushedBlock); // Remove from old location
                 Block newLocation = pushedBlock.getRelative(direction);
+                ArcaniaProvider.getPlugin().getJavaPlugin().getLogger().info(String.format("Initial tag location removed %d,%d,%d. New location tagged: %d,%d,%d", pushedBlock.getX(), pushedBlock.getY(), pushedBlock.getZ(), newLocation.getX(), newLocation.getY(), newLocation.getZ()));
                 blockTaggingService.tagBlockAsPlayerPlaced(newLocation); // Tag at new location
             }
         }
+
+        //reversed version
+        for (Block pushedBlock : event.getBlocks().reversed()) {
+            if (blockTaggingService.isPlayerPlaced(pushedBlock)) {
+                blockTaggingService.removePlayerPlacedTag(pushedBlock); // Remove from old location
+                Block newLocation = pushedBlock.getRelative(direction);
+                ArcaniaProvider.getPlugin().getJavaPlugin().getLogger().info(String.format("Initial tag location removed %d,%d,%d. New location tagged: %d,%d,%d", pushedBlock.getX(), pushedBlock.getY(), pushedBlock.getZ(), newLocation.getX(), newLocation.getY(), newLocation.getZ()));
+                blockTaggingService.tagBlockAsPlayerPlaced(newLocation); // Tag at new location
+            }
+        }
+
     }
 
     @EventHandler
@@ -100,8 +145,8 @@ public class BlockUpdateListener implements Listener {
         if (event.isCancelled()) return;
 
         BlockTaggingService blockTaggingService = ArcaniaProvider.getPlugin().getBlockTaggingService();
-        if (blockTaggingService .isPlayerPlaced(event.getBlock())) {
-            blockTaggingService .removePlayerPlacedTag(event.getBlock());
+        if (blockTaggingService.isPlayerPlaced(event.getBlock())) {
+            blockTaggingService.removePlayerPlacedTag(event.getBlock());
         }
     }
 

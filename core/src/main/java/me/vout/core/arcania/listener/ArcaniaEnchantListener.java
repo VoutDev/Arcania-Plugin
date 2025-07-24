@@ -21,7 +21,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -45,7 +44,7 @@ public class ArcaniaEnchantListener implements Listener {
         ItemStack item = player.getInventory().getItemInMainHand();
         BlockTaggingService blockTaggingService = ArcaniaProvider.getPlugin().getBlockTaggingService();
 
-        if (item.getType().isAir() ||  !ItemHelper.isHarvestingTool(item.getType())) return;
+        if (item.getType().isAir() || !ItemHelper.isHarvestingTool(item.getType())) return;
 
         Map<NamespacedKey, Integer> activeEnchants = ArcaniaProvider.getPlugin().getEnchantStrategy().getActiveEnchantments(item);
 
@@ -153,8 +152,7 @@ public class ArcaniaEnchantListener implements Listener {
             if (activeEnchants.isEmpty()) return;
             if (activeEnchants.containsKey(ArcaniaEnchantType.FROSTBITE.getKey()))
                 FrostbiteHelper.onProc(event, activeEnchants.get(ArcaniaEnchantType.FROSTBITE.getKey()));
-        }
-        else if (damager instanceof Arrow arrow
+        } else if (damager instanceof Arrow arrow
                 && arrow.getShooter() instanceof Player
                 && victim instanceof LivingEntity) {
             NamespacedKey key = new NamespacedKey(ArcaniaProvider.getPlugin().getJavaPlugin(), FrostbiteHelper.FrostBiteArrowEnum.FROSTBITE_ARROW.toString());
